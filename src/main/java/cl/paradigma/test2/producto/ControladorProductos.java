@@ -25,7 +25,7 @@ public class ControladorProductos
     try {
         DAOProductos dao = new DAOProductoslmp();
         DefaultTableModel model = (DefaultTableModel) vistaProductos.tabla_productos.getModel();
-        dao.listar().forEach((n) -> model.addRow(new Object[]{n.getId(), n.getNombre(), n.getPrecio(), n.getStock()}));
+        dao.listar().forEach((n) -> model.addRow(new Object[]{n.getId(), n.getNombre(), n.getPrecio(), n.getPeso(), n.getVolumen()}));
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }

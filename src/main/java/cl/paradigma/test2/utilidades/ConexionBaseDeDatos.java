@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConexionBaseDeDatos {
     protected Connection conexion;
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private final String DB_URL = "jdbc:mysql://localhost:3306/negocio";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/almacen";
     //ACA LA MODIFIQUE EL USUARIO Y CONTRASEÑA
     private final String USER ="root";
     private final String PASS ="ianethan12";

@@ -43,7 +43,8 @@ public class ControladorVistaAgregar
             vista.getId_texto().setText(String.valueOf(getNegocioEdicion().getId()));
             vista.getNombre_texto().setText(getNegocioEdicion().getNombre());
             vista.getPrecio_texto().setText(String.valueOf(getNegocioEdicion().getPrecio()));
-            vista.getStock_texto().setText(String.valueOf(getNegocioEdicion().getStock()));
+            vista.getPeso_texto().setText(String.valueOf(getNegocioEdicion().getPeso()));
+            vista.getVolumen_texto().setText(String.valueOf(getNegocioEdicion().getVolumen()));
         }
     }
 
@@ -51,7 +52,7 @@ public class ControladorVistaAgregar
     {
         //verifica si hay campos vacios y si no continua normal
         //----
-        if (vista.getId_texto().getText().isEmpty()|| vista.getNombre_texto().getText().isEmpty()|| vista.getPrecio_texto().getText().isEmpty() || vista.getStock_texto().getText().isEmpty()) 
+        if (vista.getId_texto().getText().isEmpty()|| vista.getNombre_texto().getText().isEmpty()|| vista.getPrecio_texto().getText().isEmpty() || vista.getPeso_texto().getText().isEmpty() || vista.getVolumen_texto().getText().isEmpty()) 
         {
             JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "AVISO",JOptionPane.WARNING_MESSAGE);
         
@@ -60,13 +61,15 @@ public class ControladorVistaAgregar
             int id_entrada = Integer.parseInt(vista.getId_texto().getText());
             String nombre_entrada = vista.getNombre_texto().getText();
             int precio_entrada = Integer.parseInt(vista.getPrecio_texto().getText());
-            int stock_entrada = Integer.parseInt(vista.getStock_texto().getText());
+            int peso_entrada = Integer.parseInt(vista.getPeso_texto().getText());
+            int volumen_entrada = Integer.parseInt(vista.getVolumen_texto().getText());
 
             ModeloProducto negocio = esEdicion ? negocioEdicion : new ModeloProducto();
             negocio.setId(id_entrada);
             negocio.setNombre(nombre_entrada);
             negocio.setPrecio(precio_entrada);
-            negocio.setStock(stock_entrada);
+            negocio.setPeso(peso_entrada);
+            negocio.setVolumen(volumen_entrada);
 
             try {
                 DAOProductoslmp dao = new DAOProductoslmp();
@@ -81,7 +84,8 @@ public class ControladorVistaAgregar
                 if (!esEdicion) {
                     vista.getNombre_texto().setText("");
                     vista.getPrecio_texto().setText("");
-                    vista.getStock_texto().setText("");
+                    vista.getPeso_texto().setText("");
+                    vista.getVolumen_texto().setText("");
                     vista.getId_texto().setText("");
                 }
             } catch (Exception e) {

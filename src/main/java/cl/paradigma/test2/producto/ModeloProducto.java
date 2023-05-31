@@ -10,44 +10,51 @@ package cl.paradigma.test2.producto;
  */
 public class ModeloProducto {
     private int id;
-    private String Nombre;
-    private int Precio;
-    private int Stock;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public void setPrecio(int Precio) {
-        this.Precio = Precio;
-    }
-
-    public void setStock(int Stock) {
-        this.Stock = Stock;
-    }
+    private String nombre;
+    private int precio;
+    private int peso;
+    private int volumen;
 
     public int getId() {
         return id;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public int getPrecio() {
-        return Precio;
+        return precio;
     }
 
-    public int getStock() {
-        return Stock;
+    public int getPeso() {
+        return peso;
     }
 
-    public void setPrecio(String precio) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getVolumen() {
+        return volumen;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public void setVolumen(int volumen) {
+        this.volumen = volumen;
+    }
+    
+    
     
 }

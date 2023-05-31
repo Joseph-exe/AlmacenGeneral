@@ -19,14 +19,15 @@ import javax.swing.JOptionPane;
     public class DAOProductoslmp extends ConexionBaseDeDatos implements DAOProductos{
 
     @Override
-    public void registrar(ModeloProducto negocio) {
+    public void registrar(ModeloProducto producto) {
        try{
            this.Conectar();
-           PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO negocio(ID,Nombre,Precio,Stock)VALUES(?,?,?,?);");
-           solicitud.setInt(1, negocio.getId());
-           solicitud.setString(2, negocio.getNombre());
-           solicitud.setInt(3, negocio.getPrecio());
-           solicitud.setInt(4, negocio.getStock());
+           PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO producto(idProducto,nombre,precio,peso,volumen)VALUES(?,?,?,?,?);");
+           solicitud.setInt(1, producto.getId());
+           solicitud.setString(2, producto.getNombre());
+           solicitud.setInt(3, producto.getPrecio());
+           solicitud.setInt(4, producto.getPeso());
+           solicitud.setInt(5, producto.getVolumen());
            solicitud.executeUpdate();
        } catch(SQLException e){
            JOptionPane.showMessageDialog(null, "No se a podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -36,16 +37,18 @@ import javax.swing.JOptionPane;
     }
 
     @Override
-    public void modificar(ModeloProducto negocio) {
+    public void modificar(ModeloProducto producto) {
         try {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE negocio SET Nombre = ?, Precio = ?, Stock = ? WHERE ID= ? ");
-            solicitud.setString(1, negocio.getNombre());
-            solicitud.setInt(2, negocio.getPrecio());
-            solicitud.setInt(3, negocio.getStock());
-            solicitud.setInt(4, negocio.getId());
+            PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE producto SET nombre = ?, precio = ?, peso = ?, volumen = ? WHERE idProducto= ? ");
+            solicitud.setString(1, producto.getNombre());
+            solicitud.setInt(2, producto.getPrecio());
+            solicitud.setInt(3, producto.getPeso());
+            solicitud.setInt(4, producto.getVolumen());
+            solicitud.setInt(5, producto.getId());
             solicitud.executeUpdate();
-        } catch(SQLException e) {
+        } catch(SQLException e) 
+        {
             JOptionPane.showMessageDialog(null, "No se a podido modificar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {
             this.Cerrar();
@@ -53,12 +56,12 @@ import javax.swing.JOptionPane;
     }
 
     @Override
-    public void eliminar(int negocioId) {
+    public void eliminar(int producto_id) {
         //llamo a la la base de datos para que me borre una fila segun su id
         try {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("DELETE FROM negocio WHERE id = ?;");
-            solicitud.setInt(1, negocioId);
+            PreparedStatement solicitud = this.conexion.prepareStatement("DELETE FROM producto WHERE idProducto = ?;");
+            solicitud.setInt(1, producto_id);
             solicitud.executeUpdate();//actualizamos
             solicitud.close();//cerramos
             } catch(SQLException e) {
@@ -73,17 +76,18 @@ import javax.swing.JOptionPane;
         List<ModeloProducto> lista = null;
         try{
            this.Conectar();
-           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM negocio;");
+           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM producto;");
            
            lista = new ArrayList();
            ResultSet resultado = solicitud.executeQuery();
            while(resultado.next()){
-               ModeloProducto negocio = new ModeloProducto();
-               negocio.setId(resultado.getInt("ID"));
-               negocio.setNombre(resultado.getString("Nombre"));
-               negocio.setPrecio(resultado.getInt("Precio"));
-               negocio.setStock(resultado.getInt("Stock"));
-               lista.add(negocio);
+               ModeloProducto producto = new ModeloProducto();
+               producto.setId(resultado.getInt("idProducto"));
+               producto.setNombre(resultado.getString("nombre"));
+               producto.setPrecio(resultado.getInt("precio"));
+               producto.setPeso(resultado.getInt("peso"));
+               producto.setVolumen(resultado.getInt("volumen"));
+               lista.add(producto);
            }
            resultado.close();
            solicitud.close();
@@ -96,18 +100,19 @@ import javax.swing.JOptionPane;
     }
 
     @Override
-    public ModeloProducto getNegocioById(int negocioId) {
-        ModeloProducto negocio = new ModeloProducto();
+    public ModeloProducto getNegocioById(int producto_id) {
+        ModeloProducto producto = new ModeloProducto();
         try{
            this.Conectar();
-           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM negocio WHERE id = ? LIMIT 1;");
-           solicitud.setInt(1,negocioId);
+           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM producto WHERE idProducto = ? LIMIT 1;");
+           solicitud.setInt(1,producto_id);
            ResultSet resultado = solicitud.executeQuery();
            while(resultado.next()){
-               negocio.setId(resultado.getInt("ID"));
-               negocio.setNombre(resultado.getString("Nombre"));
-               negocio.setPrecio(resultado.getInt("Precio"));
-               negocio.setStock(resultado.getInt("Stock"));
+               producto.setId(resultado.getInt("idProducto"));
+               producto.setNombre(resultado.getString("nombre"));
+               producto.setPrecio(resultado.getInt("precio"));
+               producto.setPeso(resultado.getInt("peso"));
+               producto.setVolumen(resultado.getInt("volumen"));
            }
            resultado.close();
            solicitud.close();
@@ -116,7 +121,7 @@ import javax.swing.JOptionPane;
         }finally{
             this.Cerrar();
         }
-        return negocio;
+        return producto;
     }
     
 }

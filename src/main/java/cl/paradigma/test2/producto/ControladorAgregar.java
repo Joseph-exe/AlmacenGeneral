@@ -7,18 +7,18 @@ package cl.paradigma.test2.producto;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
-public class ControladorVistaAgregar 
+public class ControladorAgregar 
 {
     private VistaAgregar vista;
     private boolean esEdicion;
     private ModeloProducto negocioEdicion;
 
-    public ControladorVistaAgregar(VistaAgregar vista) {
+    public ControladorAgregar(VistaAgregar vista) {
         this.vista = vista;
         this.esEdicion = false;
     }
 
-    public ControladorVistaAgregar(VistaAgregar vista, ModeloProducto negocio) {
+    public ControladorAgregar(VistaAgregar vista, ModeloProducto negocio) {
         this.vista = vista;
         this.esEdicion = true;
         this.negocioEdicion = negocio;
@@ -48,7 +48,7 @@ public class ControladorVistaAgregar
         }
     }
 
-    public void botonRegistrarActionPerformed(ActionEvent evt) 
+    public void boton() 
     {
         //verifica si hay campos vacios y si no continua normal
         //----
@@ -57,7 +57,7 @@ public class ControladorVistaAgregar
             JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "AVISO",JOptionPane.WARNING_MESSAGE);
         
         } else {
-            
+            //convetimos a int
             int id_entrada = Integer.parseInt(vista.getId_texto().getText());
             String nombre_entrada = vista.getNombre_texto().getText();
             int precio_entrada = Integer.parseInt(vista.getPrecio_texto().getText());

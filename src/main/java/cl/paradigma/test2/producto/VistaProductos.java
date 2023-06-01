@@ -9,11 +9,11 @@ import cl.paradigma.test2.main.VistaAlmacen;
 public class VistaProductos extends javax.swing.JPanel 
     {
     //para que no cree mas espacio de controladores
-    private ControladorProductos controlador;
+    private ControladorEliminarEditar controlador;
     public VistaProductos() 
     {
         initComponents();
-        controlador = new ControladorProductos(this);
+        controlador = new ControladorEliminarEditar(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

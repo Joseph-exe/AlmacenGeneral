@@ -2,19 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package cl.paradigma.test2.bodega;
-
+package cl.paradigma.test2.stock;
 import cl.paradigma.test2.main.VistaAlmacen;
+import cl.paradigma.test2.utilidades.DAOStock;
 
 
-public class VistaBodegas extends javax.swing.JPanel 
+
+public class VistaStock extends javax.swing.JPanel 
     {
     //para que no cree mas espacio de controladores
-    private ControladorEliminarEditarBodega controlador;
-    public VistaBodegas() 
+    private ControladorEditarEliminar controlador;
+    private DAOStock dao;
+    public VistaStock() 
     {
         initComponents();
-        controlador = new ControladorEliminarEditarBodega(this);
+        controlador = new ControladorEditarEliminar(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,22 +36,10 @@ public class VistaBodegas extends javax.swing.JPanel
 
             },
             new String [] {
-                "IdBodegas", "Volumen_max", "Peso_max", "ID Almacen"
+                "ID Bodega", "ID Producto", "Stock"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tabla_productos);
-        if (tabla_productos.getColumnModel().getColumnCount() > 0) {
-            tabla_productos.getColumnModel().getColumn(1).setResizable(false);
-            tabla_productos.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         boton_agregar.setText("Agregar");
         boton_agregar.addActionListener(new java.awt.event.ActionListener() {

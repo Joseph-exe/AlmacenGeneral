@@ -11,17 +11,17 @@ import javax.swing.JTextField;
 public class VistaAgregar extends javax.swing.JPanel 
 {
     
-    private ControladorBodega controlador;
+    private ControladorAgregarBodega controlador;
     
     public VistaAgregar() {
         initComponents();
-        controlador = new ControladorBodega(this);
+        controlador = new ControladorAgregarBodega(this);
         controlador.edicion();
     }
 
     public VistaAgregar(ModeloBodega negocio) {
         initComponents();
-        controlador = new ControladorBodega(this, negocio);
+        controlador = new ControladorAgregarBodega(this, negocio);
         controlador.edicion();
     }
     
@@ -141,7 +141,7 @@ public class VistaAgregar extends javax.swing.JPanel
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_registrarActionPerformed
-    controlador.botonRegistrarActionPerformed(evt);
+    controlador.boton();
     }//GEN-LAST:event_boton_registrarActionPerformed
 
     private void id_almacen_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_almacen_insertarActionPerformed

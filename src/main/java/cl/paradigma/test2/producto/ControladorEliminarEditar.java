@@ -9,10 +9,10 @@ import cl.paradigma.test2.utilidades.DAOProductos;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ControladorProductos 
+public class ControladorEliminarEditar 
 {
     private VistaProductos vistaProductos;
-    public ControladorProductos(VistaProductos VistaProductos)
+    public ControladorEliminarEditar(VistaProductos VistaProductos)
     {
         this.vistaProductos = VistaProductos;
         cargarDatos();

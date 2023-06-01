@@ -4,21 +4,20 @@
  */
 package cl.paradigma.test2.bodega;
 
-import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
-public class ControladorBodega
+public class ControladorAgregarBodega
 {
     private VistaAgregar vista;
     private boolean esEdicion;
     private ModeloBodega negocioEdicion;
 
-    public ControladorBodega(VistaAgregar vista) {
+    public ControladorAgregarBodega(VistaAgregar vista) {
         this.vista = vista;
         this.esEdicion = false;
     }
 
-    public ControladorBodega(VistaAgregar vista, ModeloBodega negocio) {
+    public ControladorAgregarBodega(VistaAgregar vista, ModeloBodega negocio) {
         this.vista = vista;
         this.esEdicion = true;
         this.negocioEdicion = negocio;
@@ -47,7 +46,7 @@ public class ControladorBodega
         }
     }
 
-    public void botonRegistrarActionPerformed(ActionEvent evt) 
+    public void boton() 
     {
         //verifica si hay campos vacios y si no continua normal
         //----
@@ -56,7 +55,7 @@ public class ControladorBodega
             JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "AVISO",JOptionPane.WARNING_MESSAGE);
         
         } else {
-            
+            //convetimos a int
             int id_bodega_entrada = Integer.parseInt(vista.getId_bodega_insertar().getText());
             int id_almacen_entrada = Integer.parseInt(vista.getId_almacen_insertar().getText());
             int peso_max_entrada = Integer.parseInt(vista.getPeso_max_insertar().getText());

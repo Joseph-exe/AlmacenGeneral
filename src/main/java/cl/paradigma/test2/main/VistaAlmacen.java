@@ -5,6 +5,7 @@
 package cl.paradigma.test2.main;
 import cl.paradigma.test2.bodega.VistaBodegas;
 import cl.paradigma.test2.producto.VistaProductos;
+import cl.paradigma.test2.stock.VistaStock;
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -41,6 +42,7 @@ public class VistaAlmacen extends javax.swing.JFrame {
         boton_administrar_bodegas = new javax.swing.JButton();
         boton_caja = new javax.swing.JButton();
         boton_inicio = new javax.swing.JButton();
+        boton_Stock = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,29 +91,41 @@ public class VistaAlmacen extends javax.swing.JFrame {
             }
         });
 
+        boton_Stock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        boton_Stock.setText("Stock");
+        boton_Stock.setBorder(null);
+        boton_Stock.setBorderPainted(false);
+        boton_Stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_Stock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_StockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_menuLayout = new javax.swing.GroupLayout(panel_menu);
         panel_menu.setLayout(panel_menuLayout);
         panel_menuLayout.setHorizontalGroup(
             panel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(boton_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(boton_administrar_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boton_administrar_bodegas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boton_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(boton_administrar_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(boton_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         panel_menuLayout.setVerticalGroup(
             panel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_menuLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(50, 50, 50)
                 .addComponent(boton_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(0, 0, 0)
+                .addComponent(boton_administrar_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(boton_administrar_bodegas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boton_administrar_bodegas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panel_menuLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(boton_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(panel_menuLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(boton_administrar_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addComponent(boton_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boton_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,6 +187,10 @@ public class VistaAlmacen extends javax.swing.JFrame {
         ShowJPanel(new VistaBodegas());        
     }//GEN-LAST:event_boton_administrar_bodegasActionPerformed
 
+    private void boton_StockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_StockActionPerformed
+        ShowJPanel(new VistaStock());  
+    }//GEN-LAST:event_boton_StockActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,6 +205,7 @@ public class VistaAlmacen extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_Stock;
     private javax.swing.JButton boton_administrar_bodegas;
     private javax.swing.JButton boton_administrar_productos;
     private javax.swing.JButton boton_caja;

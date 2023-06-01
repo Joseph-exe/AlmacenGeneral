@@ -10,10 +10,11 @@ import java.util.List;
  *
  * @author Aspire-E15
  */
-public interface DAOStock {
+public interface DAOStock 
+{
     public void registrar(ModeloStock stock) throws Exception;
     public void modificar(ModeloStock stock) throws Exception;
-    public void eliminar(int bodega_id) throws Exception;
+    public void eliminar(int bodega_id, int producto_id);
     public List<ModeloStock> listar() throws Exception;
-    public ModeloStock getStockById(int bodega_id) throws Exception;
+    public ModeloStock getStockById(int bodega_id,int producto_id) throws Exception;
 }

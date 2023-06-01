@@ -38,7 +38,4 @@ public class ModeloStock
         return stock_modelo;
     }
 
-
-    
-    
 }

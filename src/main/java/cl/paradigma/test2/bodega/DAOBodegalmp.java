@@ -37,6 +37,7 @@ public class DAOBodegalmp extends ConexionBaseDeDatos implements DAOBodega
     public void modificar(ModeloBodega bodega) {
         try {
             this.Conectar();
+            System.out.println(bodega);
             PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE bodegas SET almacenes_idtable2 = ?, volumen_max = ?, peso_max = ? WHERE idBodegas = ?");
             solicitud.setInt(1, bodega.getId_almacen());
             solicitud.setInt(2, bodega.getVolumen_maximo());

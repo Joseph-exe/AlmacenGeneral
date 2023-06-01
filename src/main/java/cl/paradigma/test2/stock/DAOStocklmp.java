@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
     {
 
     @Override
-    public void registrar(ModeloStock stock) {
+    public void registrar(ModeloStock stock) 
+    {
        try{
            this.Conectar();
            PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO stock_producto_bodega(Bodegas_idBodegas,Productos_idProducto,stock)VALUES(?,?,?);");
@@ -27,15 +28,15 @@ import javax.swing.JOptionPane;
            this.Cerrar();
        }
     }
-
     @Override
     public void modificar(ModeloStock stock) {
-        try {
+        try 
+        {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE stock_producto_bodega SET Bodegas_idBodegas = ?, Productos_idProducto = ?, stock = ? WHERE Bodegas_idBodegas = ? AND producto_modelo_stock = ? ");
-            solicitud.setInt(1, stock.getId_bodega_modelo_stock());
-            solicitud.setInt(2, stock.getId_producto_modelo_stock());
-            solicitud.setInt(3, stock.getStock_modelo());
+            PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE stock_producto_bodega SET stock = ? WHERE bodegas_idBodegas = ? and productos_idProducto = ? ");
+            solicitud.setInt(1, stock.getStock_modelo());
+            solicitud.setInt(2, stock.getId_bodega_modelo_stock());
+            solicitud.setInt(3, stock.getId_producto_modelo_stock());
             solicitud.executeUpdate();
         } catch(SQLException e) 
         {
@@ -45,12 +46,13 @@ import javax.swing.JOptionPane;
         }        
     }
 
-    public void eliminar(int bodega_id) {
+    public void eliminar(int bodega_id, int producto_id) {
         //llamo a la la base de datos para que me borre una fila segun su id
         try {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("DELETE FROM stock_producto_bodega WHERE Bodegas_idBodegas = ? AND producto_modelo_stock = ?;");
-            solicitud.setInt(2, bodega_id);
+            PreparedStatement solicitud = this.conexion.prepareStatement("DELETE FROM stock_producto_bodega WHERE bodegas_idBodegas = ? AND productos_idProducto = ? ");
+            solicitud.setInt(1, bodega_id);
+            solicitud.setInt(2, producto_id);
             solicitud.executeUpdate();//actualizamos
             solicitud.close();//cerramos
             } catch(SQLException e) {
@@ -84,15 +86,17 @@ import javax.swing.JOptionPane;
         }
         return lista;
     }
-    public ModeloStock getStockById(int bodega_id) throws Exception 
+    public ModeloStock getStockById(int bodega_id, int producto_id) throws Exception 
     {
         ModeloStock stock = new ModeloStock();
         try{
            this.Conectar();
-           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM stock_producto_bodega WHERE Bodegas_idBodegas = ? AND producto_modelo_stock = ? LIMIT 1;");
-           solicitud.setInt(2,bodega_id);
+           PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM stock_producto_bodega WHERE bodegas_idBodegas = ? AND productos_idProducto = ? ");
+           solicitud.setInt(1,bodega_id);
+           solicitud.setInt(2,producto_id);
            ResultSet resultado = solicitud.executeQuery();
-           while(resultado.next()){
+           while(resultado.next())
+           {
                stock.setId_bodega_modelo_stock(resultado.getInt("bodegas_idBodegas"));
                stock.setId_producto_modelo_stock(resultado.getInt("productos_idProducto"));
                stock.setStock_modelo(resultado.getInt("stock"));

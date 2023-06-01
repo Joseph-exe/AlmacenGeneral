@@ -30,11 +30,11 @@ public class ControladorEditarEliminar
         {
             //se agrega y el orden en que se agrega
             n.getId_bodega_modelo_stock(), 
-            n.getId_bodega_modelo_stock(), 
+            n.getId_producto_modelo_stock(), 
             n.getStock_modelo(), 
         }));
     } catch (Exception e) {
-        System.out.println(e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error cargar datos.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
     }
     }
     //--------
@@ -57,10 +57,12 @@ public class ControladorEditarEliminar
             for (int i : vistaStock.tabla_productos.getSelectedRows()) {//aca guardamos las ID ya que se seleccionaba por posicion(comenzaba del 0)
                 try 
                 {
-                    dao.eliminar((int) vistaStock.tabla_productos.getValueAt(i, 0));
+                    int negocioId = (int) vistaStock.tabla_productos.getValueAt(i, 0);
+                    int productoId = (int) vistaStock.tabla_productos.getValueAt(i, 1);
+                    dao.eliminar(negocioId, productoId);
                     model.removeRow(i);
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    JOptionPane.showMessageDialog(null, "Error de boton\n", "AVISO", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }    
@@ -74,19 +76,21 @@ public class ControladorEditarEliminar
             if (vistaStock.tabla_productos.getSelectedRow() > -1) 
             {
             try {
+                //PASAR COLUMNAS
                 int negocioId = (int) vistaStock.tabla_productos.getValueAt(vistaStock.tabla_productos.getSelectedRow(), 0);
+                int productoId = (int) vistaStock.tabla_productos.getValueAt(vistaStock.tabla_productos.getSelectedRow(), 1);
                 DAOStock dao = new DAOStocklmp();
+                
                 //-----
                 //Mostrar la vista editar bloqueando poder editar el ID
                 //----
-                VistaAgregar vistaEditar = new VistaAgregar(dao.getStockById(negocioId));
+                VistaAgregar vistaEditar = new VistaAgregar(dao.getStockById(negocioId,productoId));
                 vistaEditar.getId_bodega_entrada().setEditable(false);
-                vistaEditar.getId_producto_entrada().setEditable(false);
                 VistaAlmacen.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
             {
-                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error de boton editar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
             }
             } else {
             JOptionPane.showMessageDialog(null, "Debes seleccionar el usuario a editar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);

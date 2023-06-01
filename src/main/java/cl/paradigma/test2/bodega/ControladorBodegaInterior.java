@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cl.paradigma.test2.producto;
+package cl.paradigma.test2.bodega;
 
 import cl.paradigma.test2.main.VistaAlmacen;
-import cl.paradigma.test2.utilidades.DAOProductos;
+import cl.paradigma.test2.utilidades.DAOBodega;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ControladorProductos 
+public class ControladorBodegaInterior 
 {
-    private VistaProductos vistaProductos;
-    public ControladorProductos(VistaProductos VistaProductos)
+    private VistaBodegas vistaProductos;
+    public ControladorBodegaInterior(VistaBodegas VistaProductos)
     {
         this.vistaProductos = VistaProductos;
         cargarDatos();
@@ -23,9 +23,16 @@ public class ControladorProductos
     private void cargarDatos() 
     {
     try {
-        DAOProductos dao = new DAOProductoslmp();
+        DAOBodega dao = new DAOBodegalmp();
         DefaultTableModel model = (DefaultTableModel) vistaProductos.tabla_productos.getModel();
-        dao.listar().forEach((n) -> model.addRow(new Object[]{n.getId(), n.getNombre(), n.getPrecio(), n.getPeso(), n.getVolumen()}));
+        dao.listar().forEach((bodega) -> model.addRow(new Object[]
+        {
+            //se agregan estos datos
+            bodega.getId_bodega(), 
+            bodega.getVolumen_maximo(), 
+            bodega.getPeso_maximo(),
+            bodega.getId_almacen(),     
+        }));
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }
@@ -35,7 +42,7 @@ public class ControladorProductos
     //--------
     public void botonEliminarProductos()
     {
-        DAOProductos dao = new DAOProductoslmp();
+        DAOBodega dao = new DAOBodegalmp();
         DefaultTableModel model = (DefaultTableModel) vistaProductos.tabla_productos.getModel();
         //
         //selecciona la tabla con su ID respectivo, luego lo borra segun la ID misma
@@ -68,12 +75,12 @@ public class ControladorProductos
             {
             try {
                 int negocioId = (int) vistaProductos.tabla_productos.getValueAt(vistaProductos.tabla_productos.getSelectedRow(), 0);
-                DAOProductos dao = new DAOProductoslmp();
+                DAOBodega dao = new DAOBodegalmp();
                 //-----
                 //Mostrar la vista editar bloqueando poder editar el ID
                 //----
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
-                vistaEditar.getId_texto().setEditable(false);
+                vistaEditar.getId_bodega_insertar().setEditable(false);
                 VistaAlmacen.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
@@ -84,5 +91,4 @@ public class ControladorProductos
             JOptionPane.showMessageDialog(null, "Debes seleccionar el usuario a editar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }

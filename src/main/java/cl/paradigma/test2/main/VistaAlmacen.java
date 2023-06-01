@@ -3,15 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cl.paradigma.test2.main;
-import cl.paradigma.test2.bodega.VistaBodega;
+import cl.paradigma.test2.bodega.VistaBodegas;
 import cl.paradigma.test2.producto.VistaProductos;
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-public class VistaGeneral extends javax.swing.JFrame {
+public class VistaAlmacen extends javax.swing.JFrame {
 
-    public VistaGeneral() 
+    public VistaAlmacen() 
     {
         initComponents();
         initConten();
@@ -170,7 +170,7 @@ public class VistaGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_inicioActionPerformed
 
     private void boton_administrar_bodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_administrar_bodegasActionPerformed
-        ShowJPanel(new VistaBodega());
+        ShowJPanel(new VistaBodegas());        
     }//GEN-LAST:event_boton_administrar_bodegasActionPerformed
 
     /**
@@ -182,7 +182,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaGeneral().setVisible(true);
+                new VistaAlmacen().setVisible(true);
             }
         });
     }

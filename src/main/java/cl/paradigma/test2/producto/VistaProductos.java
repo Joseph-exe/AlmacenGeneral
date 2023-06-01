@@ -4,7 +4,7 @@
  */
 package cl.paradigma.test2.producto;
 
-import cl.paradigma.test2.main.VistaGeneral;
+import cl.paradigma.test2.main.VistaAlmacen;
 
 public class VistaProductos extends javax.swing.JPanel 
     {
@@ -111,7 +111,7 @@ public class VistaProductos extends javax.swing.JPanel
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-        VistaGeneral.ShowJPanel(new VistaAgregar());//al presionar agregar se muestra el jpanel agregar
+        VistaAlmacen.ShowJPanel(new VistaAgregar());//al presionar agregar se muestra el jpanel agregar
     }//GEN-LAST:event_boton_agregarActionPerformed
 
     private void boton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_eliminarActionPerformed

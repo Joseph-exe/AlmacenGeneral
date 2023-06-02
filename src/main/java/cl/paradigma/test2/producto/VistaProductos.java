@@ -33,7 +33,7 @@ public class VistaProductos extends javax.swing.JPanel
 
             },
             new String [] {
-                "ID", "Nombre", "Precio", "Stock"
+                "ID", "Nombre", "Precio", "Peso", "Volumen"
             }
         ));
         jScrollPane1.setViewportView(tabla_productos);

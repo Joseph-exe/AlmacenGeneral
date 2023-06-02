@@ -26,6 +26,7 @@ public class ModeloProducto {
     public int getPrecio() {
         return precio;
     }
+    
 
     public int getPeso() {
         return peso;

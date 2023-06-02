@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cl.paradigma.test2.main;
+import cl.paradigma.test2.venta.VistaVenta;
 import cl.paradigma.test2.almacen.VistaAlmacenes;
 import cl.paradigma.test2.bodega.VistaBodegas;
 import cl.paradigma.test2.caja.VistaCaja;

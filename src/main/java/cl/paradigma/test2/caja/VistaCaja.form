@@ -34,8 +34,10 @@
               <Component id="jScrollPane1" alignment="0" pref="497" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="138" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" pref="105" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="boton_agregar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="boton_editar" min="-2" max="-2" attributes="0"/>
@@ -48,14 +50,17 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="320" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="boton_agregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="boton_editar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="boton_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="boton_agregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="boton_editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="boton_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -76,7 +81,7 @@
                   <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="ID Caja" type="java.lang.Object"/>
                     <Column editable="true" title="Tipo" type="java.lang.Object"/>
-                    <Column editable="true" title="Numero" type="java.lang.Object"/>
+                    <Column editable="true" title="Numero de Caja" type="java.lang.Object"/>
                     <Column editable="true" title="ID Almacen" type="java.lang.Object"/>
                     <Column editable="false" title="ID Vendedor" type="java.lang.Object"/>
                   </Table>
@@ -147,6 +152,11 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cierre de Caja"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Boletas"/>
           </Properties>
         </Component>
       </SubComponents>

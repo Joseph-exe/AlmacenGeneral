@@ -83,6 +83,7 @@ import javax.swing.JOptionPane;
            while(resultado.next()){
                ModeloProducto producto = new ModeloProducto();
                producto.setId(resultado.getInt("idProducto"));
+               System.out.println("ID: " + producto.getId());
                producto.setNombre(resultado.getString("nombre"));
                producto.setPrecio(resultado.getInt("precio"));
                producto.setPeso(resultado.getInt("peso"));

@@ -11,8 +11,8 @@ public class ControladorAgregarBodega
     private VistaAgregar vista;
     private boolean esEdicion;
     private ModeloBodega negocioEdicion;
-
-    public ControladorAgregarBodega(VistaAgregar vista) {
+    public ControladorAgregarBodega(VistaAgregar vista) 
+    {
         this.vista = vista;
         this.esEdicion = false;
     }
@@ -76,7 +76,7 @@ public class ControladorAgregarBodega
                 }
                 String successMsg = esEdicion ? "modificado" : "registrado";
 
-                JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) {
                     vista.getPeso_max_insertar().setText("");
                     vista.getVolumen_max_insertar().setText("");

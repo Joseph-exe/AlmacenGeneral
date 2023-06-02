@@ -17,22 +17,33 @@ public class DAOBodegalmp extends ConexionBaseDeDatos implements DAOBodega
 {
 
     @Override
-    public void registrar(ModeloBodega bodega) {
-        try {
-            this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO bodegas(idBodegas,volumen_max,peso_max,almacenes_idtable2) VALUES(?,?,?,?);");
-            solicitud.setInt(1, bodega.getId_bodega());
-            solicitud.setInt(2, bodega.getVolumen_maximo());
-            solicitud.setInt(3, bodega.getPeso_maximo());
-            solicitud.setInt(4, bodega.getId_almacen());
-            solicitud.executeUpdate();
-        } catch (SQLException e) 
-        {
-            JOptionPane.showMessageDialog(null, "No se ha podido agregar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            this.Cerrar();
+public void registrar(ModeloBodega bodega) {
+    try {
+        this.Conectar();
+        
+        // Verificar si el almacén existe en la base de datos
+        PreparedStatement verificarAlmacen = this.conexion.prepareStatement("SELECT almacenes_idtable2 FROM bodegas WHERE almacenes_idtable2 = ?");
+        verificarAlmacen.setInt(1, bodega.getId_almacen());
+        ResultSet resultado = verificarAlmacen.executeQuery();
+        if (!resultado.next()) {
+            // si no esta
+            JOptionPane.showMessageDialog(null, "Ese almacén no se encuentra registrado.", "AVISO", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO bodegas(idBodegas, volumen_max, peso_max, almacenes_idtable2) VALUES (?, ?, ?, ?)");
+        solicitud.setInt(1, bodega.getId_bodega());
+        solicitud.setInt(2, bodega.getVolumen_maximo());
+        solicitud.setInt(3, bodega.getPeso_maximo());
+        solicitud.setInt(4, bodega.getId_almacen());
+        solicitud.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Se ha registrado correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al registrar. No se ha podido agregar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
+    } finally {
+        this.Cerrar();
     }
+}
     @Override
     public void modificar(ModeloBodega bodega) {
         try {

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package cl.paradigma.test2.stock;
-import cl.paradigma.test2.main.VistaAlmacen;
+import cl.paradigma.test2.main.VistaPrincipal;
 import cl.paradigma.test2.utilidades.DAOStock;
 
 
@@ -87,7 +87,7 @@ public class VistaStock extends javax.swing.JPanel
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(texto)
                     .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,7 +114,7 @@ public class VistaStock extends javax.swing.JPanel
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-        VistaAlmacen.ShowJPanel(new VistaAgregar());//al presionar agregar se muestra el jpanel agregar
+        VistaPrincipal.ShowJPanel(new VistaAgregar());//al presionar agregar se muestra el jpanel agregar
     }//GEN-LAST:event_boton_agregarActionPerformed
 
     private void boton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_eliminarActionPerformed

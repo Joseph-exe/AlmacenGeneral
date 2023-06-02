@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cl.paradigma.test2.bodega;
-
-import cl.paradigma.test2.main.VistaAlmacen;
+import cl.paradigma.test2.main.VistaPrincipal;
 import cl.paradigma.test2.utilidades.DAOBodega;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -82,7 +81,7 @@ public class ControladorEliminarEditarBodega
                 //----
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
                 vistaEditar.getId_bodega_insertar().setEditable(false);
-                VistaAlmacen.ShowJPanel(vistaEditar);
+                VistaPrincipal.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
             {

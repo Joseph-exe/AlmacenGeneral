@@ -4,7 +4,6 @@
  */
 package cl.paradigma.test2.producto;
 
-import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 public class ControladorAgregar 

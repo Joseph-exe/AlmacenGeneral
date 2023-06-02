@@ -4,7 +4,7 @@
  */
 package cl.paradigma.test2.stock;
 
-import cl.paradigma.test2.main.VistaAlmacen;
+import cl.paradigma.test2.main.VistaPrincipal;
 import cl.paradigma.test2.utilidades.DAOStock;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -86,7 +86,7 @@ public class ControladorEditarEliminar
                 //----
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getStockById(negocioId,productoId));
                 vistaEditar.getId_bodega_entrada().setEditable(false);
-                VistaAlmacen.ShowJPanel(vistaEditar);
+                VistaPrincipal.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
             {

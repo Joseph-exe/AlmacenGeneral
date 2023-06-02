@@ -4,16 +4,18 @@
  */
 package cl.paradigma.test2.main;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aspire-E15
  */
-public class VistaInicio extends javax.swing.JPanel {
+public class VistaBienvenida extends javax.swing.JPanel {
 
     /**
      * Creates new form inicio
      */
-    public VistaInicio() {
+    public VistaBienvenida() {
         initComponents();
     }
     

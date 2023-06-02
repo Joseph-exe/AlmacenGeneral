@@ -4,7 +4,7 @@
  */
 package cl.paradigma.test2.producto;
 
-import cl.paradigma.test2.main.VistaAlmacen;
+import cl.paradigma.test2.main.VistaPrincipal;
 import cl.paradigma.test2.utilidades.DAOProductos;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -74,7 +74,7 @@ public class ControladorEliminarEditar
                 //----
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
                 vistaEditar.getId_texto().setEditable(false);
-                VistaAlmacen.ShowJPanel(vistaEditar);
+                VistaPrincipal.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
             {

@@ -16,11 +16,13 @@ public class VistaVenta extends javax.swing.JPanel {
     //manejar mejor la tabla
     private DefaultTableModel carritoTableModel;
     private ModeloProducto producto;
+    private int total;
     
     public VistaVenta() {
         initComponents();
         carritoTableModel = (DefaultTableModel) carrito.getModel();//le pasamos la tabla en cuestion
         cargarDatos();
+        total = 0;
     }
 
     private void cargarDatos() 
@@ -33,7 +35,6 @@ public class VistaVenta extends javax.swing.JPanel {
         System.out.println(e.getMessage());
     }
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -102,8 +103,6 @@ public class VistaVenta extends javax.swing.JPanel {
 
         combo_box_vendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "vendedor1", "vendedor2" }));
 
-        variable_valor.setText("99999");
-
         carrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -166,12 +165,12 @@ public class VistaVenta extends javax.swing.JPanel {
                 .addGap(7, 7, 7)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(combo_box_caja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo_box_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(texto_seleccionar_caja)
-                            .addComponent(texto_seleccionar_vendedor))))
+                            .addComponent(texto_seleccionar_vendedor)
+                            .addComponent(combo_box_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(5, 5, 5)
@@ -194,7 +193,7 @@ public class VistaVenta extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -205,7 +204,7 @@ public class VistaVenta extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 //estos 3 son los botones
@@ -216,7 +215,7 @@ public class VistaVenta extends javax.swing.JPanel {
     private void agregar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_productosActionPerformed
     String idProductoText = id_entrada_producto.getText();
     
-    if  (idProductoText.isEmpty())
+    if  (idProductoText.isEmpty())//cuando el texto este vacio
     {
         JOptionPane.showMessageDialog(null, "Por favor, ingrese el ID del producto.", "AVISO", JOptionPane.WARNING_MESSAGE);
     }
@@ -226,22 +225,26 @@ public class VistaVenta extends javax.swing.JPanel {
             try 
             {
                 producto = dao.getNegocioById(producto_id);
-                if (producto.getNombre() == null)
+                if (producto.getNombre() == null)//si selecciono una ID que no existe pero se valida si el nombre es null
                 {
                     JOptionPane.showMessageDialog(null, "Este producto no existe \n", "AVISO", JOptionPane.ERROR_MESSAGE);
                 }else
                 {
                 carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
+                //suma para saber el valor total
+                total += producto.getPrecio(); // Sumar el precio al total
+                variable_valor.setText(String.valueOf(total)); // Actualizar el valor en la etiqueta
                 }
             } catch (Exception ex) 
             {
                 JOptionPane.showMessageDialog(null, "Error al agregar a su carro.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
             }
         }
+    
     }//GEN-LAST:event_agregar_productosActionPerformed
 
     private void boton_vender_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_vender_totalActionPerformed
-
+        
     }//GEN-LAST:event_boton_vender_totalActionPerformed
 
     

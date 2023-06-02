@@ -60,7 +60,7 @@ import javax.swing.JOptionPane;
             } finally {
                 this.Cerrar();
             }
-    }
+    }  
 
     @Override
     public List<ModeloStock> listar() {

@@ -5,6 +5,7 @@
 package cl.paradigma.test2.main;
 import cl.paradigma.test2.almacen.VistaAlmacenes;
 import cl.paradigma.test2.bodega.VistaBodegas;
+import cl.paradigma.test2.caja.VistaCaja;
 import cl.paradigma.test2.producto.VistaProductos;
 import cl.paradigma.test2.stock.VistaStock;
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
@@ -117,6 +118,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         boton_caja1.setBorderPainted(false);
         boton_caja1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         boton_caja1.setPreferredSize(new java.awt.Dimension(37, 20));
+        boton_caja1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_caja1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_menuLayout = new javax.swing.GroupLayout(panel_menu);
         panel_menu.setLayout(panel_menuLayout);
@@ -212,6 +218,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void boton_AlmacenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AlmacenesActionPerformed
         ShowJPanel(new VistaAlmacenes());  
     }//GEN-LAST:event_boton_AlmacenesActionPerformed
+
+    private void boton_caja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_caja1ActionPerformed
+        ShowJPanel(new VistaCaja()); 
+    }//GEN-LAST:event_boton_caja1ActionPerformed
 
     /**
      * @param args the command line arguments

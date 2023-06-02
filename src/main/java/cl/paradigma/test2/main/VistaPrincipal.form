@@ -215,6 +215,9 @@
                   <Dimension value="[37, 20]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_caja1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

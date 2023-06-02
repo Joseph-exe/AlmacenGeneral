@@ -21,7 +21,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     private void initConten()
     {
-        ShowJPanel(new VistaBienvenida());
+        ShowJPanel(new VistaVenta());
 
     }
         public static void ShowJPanel(JPanel i1)
@@ -91,7 +91,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         boton_inicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        boton_inicio.setText("Inicio");
+        boton_inicio.setText("Venta");
         boton_inicio.setBorder(null);
         boton_inicio.setBorderPainted(false);
         boton_inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -113,7 +113,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         boton_caja1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        boton_caja1.setText("Caja");
+        boton_caja1.setText("Cajas");
         boton_caja1.setBorder(null);
         boton_caja1.setBorderPainted(false);
         boton_caja1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -204,7 +204,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_administrar_productosActionPerformed
 
     private void boton_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_inicioActionPerformed
-        ShowJPanel(new VistaBienvenida());
+        ShowJPanel(new VistaVenta());
     }//GEN-LAST:event_boton_inicioActionPerformed
 
     private void boton_administrar_bodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_administrar_bodegasActionPerformed

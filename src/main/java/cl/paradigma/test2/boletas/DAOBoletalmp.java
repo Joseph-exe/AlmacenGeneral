@@ -53,7 +53,7 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
             solicitud.executeUpdate();
             solicitud.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se ha podido eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ha podido eliminar.\n"+e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {
             this.Cerrar();
         }

@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package cl.paradigma.test2.caja;
-import cl.paradigma.test2.boleta.detalles.VistaDetalles;
-import cl.paradigma.test2.boletas.VistaBoleta;
+package cl.paradigma.test2.boleta.detalles;
+
 import cl.paradigma.test2.main.VistaPrincipal;
-import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
-public class VistaCaja extends javax.swing.JPanel 
+
+
+public class VistaDetalles extends javax.swing.JPanel 
     {
     //para que no cree mas espacio de controladores
-    private ControladorEliminarEditarCaja controlador;
-    public VistaCaja() 
+    private ControladorEliminarEditar controlador;
+    public VistaDetalles() 
     {
         initComponents();
-        controlador = new ControladorEliminarEditarCaja(this);
+        controlador = new ControladorEliminarEditar(this);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,19 +26,19 @@ public class VistaCaja extends javax.swing.JPanel
         boton_agregar = new javax.swing.JButton();
         boton_editar = new javax.swing.JButton();
         boton_eliminar = new javax.swing.JButton();
-        boton_boleta = new javax.swing.JButton();
-        boton_boleta_detallada = new javax.swing.JButton();
+        texto = new javax.swing.JLabel();
+        buscador = new javax.swing.JTextField();
 
         tabla_productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Caja", "Tipo", "Numero de Caja", "ID Almacen", "ID Vendedor"
+                "ID Boleta", "ID Producto", "Cantidad", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, false
+                false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -46,6 +46,10 @@ public class VistaCaja extends javax.swing.JPanel
             }
         });
         jScrollPane1.setViewportView(tabla_productos);
+        if (tabla_productos.getColumnModel().getColumnCount() > 0) {
+            tabla_productos.getColumnModel().getColumn(1).setResizable(false);
+            tabla_productos.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         boton_agregar.setText("Agregar");
         boton_agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,55 +72,43 @@ public class VistaCaja extends javax.swing.JPanel
             }
         });
 
-        boton_boleta.setText("Boletas");
-        boton_boleta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_boletaActionPerformed(evt);
-            }
-        });
-
-        boton_boleta_detallada.setText("Boletas Detalladas");
-        boton_boleta_detallada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_boleta_detalladaActionPerformed(evt);
-            }
-        });
+        texto.setText("Buscar Nombre");
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(boton_agregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boton_editar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boton_eliminar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(boton_agregar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_editar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_eliminar)
+                .addGap(12, 12, 12))
+            .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boton_boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_boleta_detallada, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(texto)
+                .addGap(18, 18, 18)
+                .addComponent(buscador)
                 .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_boleta_detallada, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(texto)
+                    .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_agregar)
                     .addComponent(boton_editar)
                     .addComponent(boton_eliminar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -143,22 +135,14 @@ public class VistaCaja extends javax.swing.JPanel
         controlador.botonEditarProductos();
     }//GEN-LAST:event_boton_editarActionPerformed
 
-    private void boton_boletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_boletaActionPerformed
-        ShowJPanel(new VistaBoleta());
-    }//GEN-LAST:event_boton_boletaActionPerformed
-
-    private void boton_boleta_detalladaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_boleta_detalladaActionPerformed
-        ShowJPanel(new VistaDetalles());
-    }//GEN-LAST:event_boton_boleta_detalladaActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_agregar;
-    private javax.swing.JButton boton_boleta;
-    private javax.swing.JButton boton_boleta_detallada;
     private javax.swing.JButton boton_editar;
     private javax.swing.JButton boton_eliminar;
+    private javax.swing.JTextField buscador;
     private javax.swing.JPanel fondo;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabla_productos;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,14 +46,11 @@ public class ControladorAgregar
     }
     public void boton() 
     {
-        //verifica si hay campos vacios y si no continua normal
-        //----
-        if (vista.getId_bodega_entrada().getText().isEmpty() || vista.getId_producto_entrada().getText().isEmpty() || vista.getStock_entrada().getText().isEmpty()) 
-        {
-            JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "AVISO",JOptionPane.WARNING_MESSAGE);
-        
+        // Verificar si hay campos vacíos y si no, continuar normalmente
+        if (vista.getId_bodega_entrada().getText().isEmpty() || vista.getId_producto_entrada().getText().isEmpty() || vista.getStock_entrada().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "AVISO", JOptionPane.WARNING_MESSAGE);
         } else {
-            //convertimos a int
+            // Convertir a int
             int id_bodega = Integer.parseInt(vista.getId_bodega_entrada().getText());
             int id_producto = Integer.parseInt(vista.getId_producto_entrada().getText());
             int stock = Integer.parseInt(vista.getStock_entrada().getText());
@@ -72,16 +69,16 @@ public class ControladorAgregar
                 }
                 String successMsg = esEdicion ? "modificado" : "registrado";
 
-                JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Se ha implementado correctamente", "AVISO", JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) {
                     vista.getId_bodega_entrada().setText("");
                     vista.getId_producto_entrada().setText("");
                     vista.getStock_entrada().setText("");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "No se ha podido agregar","AVISO",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se ha podido agregar", "AVISO", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        }
+    }
     }    
 }

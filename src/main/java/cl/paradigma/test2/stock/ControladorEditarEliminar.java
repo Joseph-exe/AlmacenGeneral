@@ -9,7 +9,6 @@ import cl.paradigma.test2.utilidades.DAOStock;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ControladorEditarEliminar 
 {
     private VistaStock vistaStock;
@@ -98,6 +97,5 @@ public class ControladorEditarEliminar
             JOptionPane.showMessageDialog(null, "Debes seleccionar el usuario a editar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }
 

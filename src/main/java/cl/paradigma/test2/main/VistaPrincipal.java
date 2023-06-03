@@ -44,7 +44,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         boton_administrar_productos = new javax.swing.JButton();
         boton_administrar_bodegas = new javax.swing.JButton();
         boton_Almacenes = new javax.swing.JButton();
-        boton_inicio = new javax.swing.JButton();
+        boton_venta = new javax.swing.JButton();
         boton_Stock = new javax.swing.JButton();
         boton_caja1 = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
@@ -91,14 +91,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        boton_inicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        boton_inicio.setText("Venta");
-        boton_inicio.setBorder(null);
-        boton_inicio.setBorderPainted(false);
-        boton_inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_inicio.addActionListener(new java.awt.event.ActionListener() {
+        boton_venta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        boton_venta.setText("Venta");
+        boton_venta.setBorder(null);
+        boton_venta.setBorderPainted(false);
+        boton_venta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_inicioActionPerformed(evt);
+                boton_ventaActionPerformed(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panel_menu.setLayout(panel_menuLayout);
         panel_menuLayout.setHorizontalGroup(
             panel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boton_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(boton_venta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boton_Almacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boton_administrar_bodegas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(boton_administrar_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,7 +140,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             panel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_menuLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(boton_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_venta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(boton_Almacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -205,9 +205,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ShowJPanel(new VistaProductos());
     }//GEN-LAST:event_boton_administrar_productosActionPerformed
 
-    private void boton_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_inicioActionPerformed
+    private void boton_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ventaActionPerformed
         ShowJPanel(new VistaVenta());
-    }//GEN-LAST:event_boton_inicioActionPerformed
+    }//GEN-LAST:event_boton_ventaActionPerformed
 
     private void boton_administrar_bodegasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_administrar_bodegasActionPerformed
         ShowJPanel(new VistaBodegas());        
@@ -244,7 +244,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton boton_administrar_bodegas;
     private javax.swing.JButton boton_administrar_productos;
     private javax.swing.JButton boton_caja1;
-    private javax.swing.JButton boton_inicio;
+    private javax.swing.JButton boton_venta;
     private static javax.swing.JPanel contenido;
     private javax.swing.JPanel fondo;
     private javax.swing.JPanel panel_menu;

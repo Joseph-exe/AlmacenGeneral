@@ -15,14 +15,14 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
     public void registrar(ModeloBoleta boleta) {
         try {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO boletas(idboletas, fecha, cajas_idCajas) VALUES (?, ?, ?)");
+            PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO boletas(idboletas, fecha, cajas_idCaja) VALUES (?, ?, ?)");
             solicitud.setInt(1, boleta.getId_boleta());
-            solicitud.setInt(2, boleta.getFecha());
+            solicitud.setDate(2, new java.sql.Date(boleta.getFecha().getTime()));
             solicitud.setInt(3, boleta.getId_caja());
 
             solicitud.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se ha podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ha podido agregar.\n"+ e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {
             this.Cerrar();
         }
@@ -33,7 +33,7 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
         try {
             this.Conectar();
             PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE boletas SET fecha = ?, cajas_idCaja = ? WHERE idboletas = ?");
-            solicitud.setInt(1, boleta.getFecha());
+            solicitud.setDate(1, new java.sql.Date(boleta.getFecha().getTime()));
             solicitud.setInt(2, boleta.getId_caja());
             solicitud.setInt(3, boleta.getId_boleta());
             solicitud.executeUpdate();
@@ -64,14 +64,15 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
         List<ModeloBoleta> lista = null;
         try {
             this.Conectar();
-            PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM boletas");
+            PreparedStatement solicitud = this.conexion.prepareStatement("SELECT idboletas, DATE(fecha) AS fecha, cajas_idCaja FROM boletas");
 
             lista = new ArrayList<>();
             ResultSet resultado = solicitud.executeQuery();
             while (resultado.next()) {
                 ModeloBoleta boleta = new ModeloBoleta();
                 boleta.setId_boleta(resultado.getInt("idboletas"));
-                boleta.setFecha(resultado.getInt("fecha"));
+                java.util.Date fecha = new java.util.Date(resultado.getDate("fecha").getTime());
+                boleta.setFecha(fecha);
                 boleta.setId_caja(resultado.getInt("cajas_idCaja"));
                 lista.add(boleta);
             }
@@ -79,7 +80,6 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
             solicitud.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al listar:\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
         } finally {
             this.Cerrar();
         }
@@ -96,7 +96,8 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
             ResultSet resultado = solicitud.executeQuery();
             while (resultado.next()) {
                 boleta.setId_boleta(resultado.getInt("idboletas"));
-                boleta.setFecha(resultado.getInt("fecha"));
+                java.util.Date fecha = new java.util.Date(resultado.getDate("fecha").getTime());
+                boleta.setFecha(fecha);
                 boleta.setId_caja(resultado.getInt("cajas_idCaja"));
             }
             resultado.close();

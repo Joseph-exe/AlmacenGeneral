@@ -4,8 +4,9 @@
  */
 package cl.paradigma.test2.boletas;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-
 
 public class ControladorAgregarBoleta 
 {
@@ -46,7 +47,7 @@ public class ControladorAgregarBoleta
         }
     }
 
-    public void boton() 
+    public void boton() throws java.text.ParseException 
     {
         //verifica si hay campos vacios y si no continua normal
         //----
@@ -57,9 +58,13 @@ public class ControladorAgregarBoleta
         } else {
             //convetimos a int
             int id_boleta = Integer.parseInt(vista.getId_boleta_entrada().getText());
-            int fecha_entrada = Integer.parseInt(vista.getFecha_entrada().getText());
+            //para ingresar la hora
+            java.util.Date fecha_entrada = null;
+            String fecha_entradaStr = vista.getFecha_entrada().getText();
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            fecha_entrada = dateFormat.parse(fecha_entradaStr);
+            //fin
             int caja_entrada = Integer.parseInt(vista.getId_caja_entrada().getText());
-
             ModeloBoleta boleta = esEdicion ? negocioEdicion : new ModeloBoleta();
             boleta.setId_boleta(id_boleta);
             boleta.setFecha(fecha_entrada);

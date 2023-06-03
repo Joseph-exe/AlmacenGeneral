@@ -197,7 +197,8 @@ public class VistaVenta extends javax.swing.JPanel {
         return id_entrada_producto;
     }
 
-    public JLabel getVariable_valor() {
+    public JLabel getVariable_valor() 
+    {
         return variable_valor;
     }
     

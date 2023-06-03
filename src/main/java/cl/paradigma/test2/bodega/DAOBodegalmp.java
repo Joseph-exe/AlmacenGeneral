@@ -48,13 +48,13 @@ public void registrar(ModeloBodega bodega) {
     public void modificar(ModeloBodega bodega) {
         try {
             this.Conectar();
-            System.out.println(bodega);
             PreparedStatement solicitud = this.conexion.prepareStatement("UPDATE bodegas SET almacenes_idtable2 = ?, volumen_max = ?, peso_max = ? WHERE idBodegas = ?");
             solicitud.setInt(1, bodega.getId_almacen());
             solicitud.setInt(2, bodega.getVolumen_maximo());
             solicitud.setInt(3, bodega.getPeso_maximo());
             solicitud.setInt(4, bodega.getId_bodega());
             solicitud.executeUpdate();
+            JOptionPane.showMessageDialog(null, "se ha editado correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se ha podido modificar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {

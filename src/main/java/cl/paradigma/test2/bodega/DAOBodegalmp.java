@@ -76,7 +76,6 @@ public void registrar(ModeloBodega bodega) {
             this.Cerrar();
         }
     }
-
     @Override
     public List<ModeloBodega> listar() {
         List<ModeloBodega> lista = null;

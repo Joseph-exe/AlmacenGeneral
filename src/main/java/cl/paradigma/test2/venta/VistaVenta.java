@@ -6,7 +6,11 @@ package cl.paradigma.test2.venta;
 
 import cl.paradigma.test2.producto.DAOProductoslmp;
 import cl.paradigma.test2.producto.ModeloProducto;
+import cl.paradigma.test2.stock.DAOStocklmp;
 import cl.paradigma.test2.utilidades.DAOProductos;
+import cl.paradigma.test2.utilidades.DAOStock;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +20,7 @@ public class VistaVenta extends javax.swing.JPanel {
     //manejar mejor la tabla
     private DefaultTableModel carritoTableModel;
     private ModeloProducto producto;
+    private List<ProductoCantidad> listaProductos;
     private int total;
     
     public VistaVenta() {
@@ -23,6 +28,8 @@ public class VistaVenta extends javax.swing.JPanel {
         carritoTableModel = (DefaultTableModel) carrito.getModel();//le pasamos la tabla en cuestion
         cargarDatos();
         total = 0;
+        listaProductos = new ArrayList<>();
+        
     }
 
     private void cargarDatos() 
@@ -225,15 +232,29 @@ public class VistaVenta extends javax.swing.JPanel {
             try 
             {
                 producto = dao.getNegocioById(producto_id);
-                if (producto.getNombre() == null)//si selecciono una ID que no existe pero se valida si el nombre es null
+                
+                if (producto.getNombre() == null) // cuando el id sea incorrecto
                 {
-                    JOptionPane.showMessageDialog(null, "Este producto no existe \n", "AVISO", JOptionPane.ERROR_MESSAGE);
-                }else
-                {
-                carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
-                //suma para saber el valor total
-                total += producto.getPrecio(); // Sumar el precio al total
-                variable_valor.setText(String.valueOf(total)); // Actualizar el valor en la etiqueta
+                    JOptionPane.showMessageDialog(null, "Este producto no existe.", "AVISO", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
+                    total += producto.getPrecio();// para sacar el total
+                    variable_valor.setText(String.valueOf(total));//para actualizar
+
+                    boolean encontrado = false;
+                    //para poner en una lista lo que se va agregando y poder venderlo
+                    for (ProductoCantidad producto_cantidad : listaProductos) {
+                        if (producto_cantidad.getIdProducto() == producto_id) 
+                        {
+                            producto_cantidad.setCantidad(producto_cantidad.getCantidad() + 1);
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if (!encontrado) 
+                    {
+                        listaProductos.add(new ProductoCantidad(producto_id, 1));
+                    }
                 }
             } catch (Exception ex) 
             {
@@ -244,10 +265,37 @@ public class VistaVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_agregar_productosActionPerformed
 
     private void boton_vender_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_vender_totalActionPerformed
+    for (ProductoCantidad producto_cantidad : listaProductos) {
+        int idProducto = producto_cantidad.getIdProducto();
+        int cantidad = producto_cantidad.getCantidad();
+        //System.out.println("ID: " + idProducto + ", Cantidad: " + cantidad);
+        DAOStock dao = new DAOStocklmp();
         
+        dao.descontar(idProducto, cantidad);
+    } 
     }//GEN-LAST:event_boton_vender_totalActionPerformed
 
+    public class ProductoCantidad {
+    private int idProducto;
+    private int cantidad;
+
+    public ProductoCantidad(int idProducto, int cantidad) {
+        this.idProducto = idProducto;
+        this.cantidad = cantidad;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
     
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_productos;
     private javax.swing.JButton boton_vender_total;

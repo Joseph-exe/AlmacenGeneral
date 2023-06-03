@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-    public class DAOStocklmp extends ConexionBaseDeDatos implements DAOStock
-    {
+public class DAOStocklmp extends ConexionBaseDeDatos implements DAOStock
+{
 
     @Override
     public void registrar(ModeloStock stock) 
@@ -60,7 +60,60 @@ import javax.swing.JOptionPane;
             } finally {
                 this.Cerrar();
             }
-    }  
+    }
+
+    public void descontar(int id_producto, int cantidad) {
+        try {
+            this.Conectar();
+            PreparedStatement solicitud = this.conexion.prepareStatement("SELECT * FROM stock_producto_bodega WHERE Productos_idProducto = ?");
+            solicitud.setInt(1, id_producto);
+            ResultSet resultado = solicitud.executeQuery();
+
+            while (resultado.next()) {
+                int stockActual = resultado.getInt("stock");
+                int bodegaId = resultado.getInt("Bodegas_idBodegas");
+                int productoId = resultado.getInt("Productos_idProducto");
+
+                if (stockActual >= cantidad) {
+                    int stockActualizado = stockActual - cantidad;
+
+                    // Actualizar el stock en la tabla
+                    PreparedStatement actualizar = this.conexion.prepareStatement("UPDATE stock_producto_bodega SET stock = ? WHERE Bodegas_idBodegas = ? AND Productos_idProducto = ?");
+                    actualizar.setInt(1, stockActualizado);
+                    actualizar.setInt(2, bodegaId);
+                    actualizar.setInt(3, productoId);
+                    actualizar.executeUpdate();
+                    actualizar.close();
+
+                    cantidad = 0; // Se descontó todo el stock necesario, salir del ciclo
+                } else {
+                    // Descontar la cantidad disponible en la bodega actual
+                    cantidad -= stockActual;
+
+                    // Actualizar el stock en la tabla a 0
+                    PreparedStatement actualizar = this.conexion.prepareStatement("UPDATE stock_producto_bodega SET stock = 0 WHERE Bodegas_idBodegas = ? AND Productos_idProducto = ?");
+                    actualizar.setInt(1, bodegaId);
+                    actualizar.setInt(2, productoId);
+                    actualizar.executeUpdate();
+                    actualizar.close();
+                }
+
+                if (cantidad == 0) {
+                    break; // Se descontó todo el stock necesario, salir del ciclo
+                }
+            }
+
+            resultado.close();
+            solicitud.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo descontar el stock.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            this.Cerrar();
+        }
+    }
+
+
+
 
     @Override
     public List<ModeloStock> listar() {

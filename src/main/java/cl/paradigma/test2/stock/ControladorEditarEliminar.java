@@ -54,12 +54,13 @@ public class ControladorEditarEliminar
         } 
         else
         {
-            for (int i : vistaStock.tabla_productos.getSelectedRows()) {//aca guardamos las ID ya que se seleccionaba por posicion(comenzaba del 0)
+            for (int i : vistaStock.tabla_productos.getSelectedRows()) {
                 try 
                 {
-                    int negocioId = (int) vistaStock.tabla_productos.getValueAt(i, 0);
-                    int productoId = (int) vistaStock.tabla_productos.getValueAt(i, 1);
-                    dao.eliminar(negocioId, productoId);
+                    int bodega_id = (int) vistaStock.tabla_productos.getValueAt(i, 0);
+                    int producto_id = (int) vistaStock.tabla_productos.getValueAt(i, 1);
+                    //int stock_entrada = (int) vistaStock.tabla_productos.getValueAt(i, 1);
+                    dao.eliminar(bodega_id, producto_id);
                     model.removeRow(i);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error de boton\n", "AVISO", JOptionPane.ERROR_MESSAGE);

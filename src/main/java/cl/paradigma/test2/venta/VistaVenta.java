@@ -27,18 +27,18 @@ public class VistaVenta extends javax.swing.JPanel {
         tabla_productos = new javax.swing.JTable();
         id_entrada_producto = new javax.swing.JTextField();
         texto_producto = new javax.swing.JLabel();
-        combo_box_caja = new javax.swing.JComboBox<>();
         agregar_productos = new javax.swing.JButton();
         boton_vender_total = new javax.swing.JButton();
         texto_total = new javax.swing.JLabel();
         texto_seleccionar_caja = new javax.swing.JLabel();
         texto_seleccionar_vendedor = new javax.swing.JLabel();
-        combo_box_vendedor = new javax.swing.JComboBox<>();
         variable_valor = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         carrito = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(497, 428));
 
@@ -55,13 +55,6 @@ public class VistaVenta extends javax.swing.JPanel {
         panel_productos.setViewportView(tabla_productos);
 
         texto_producto.setText("ID Producto");
-
-        combo_box_caja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "caja 1", "caja 2" }));
-        combo_box_caja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_box_cajaActionPerformed(evt);
-            }
-        });
 
         agregar_productos.setText("Agregar Producto");
         agregar_productos.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +74,7 @@ public class VistaVenta extends javax.swing.JPanel {
 
         texto_seleccionar_caja.setText("Seleccione Caja");
 
-        texto_seleccionar_vendedor.setText("Seleccione Vendedor");
-
-        combo_box_vendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "vendedor1", "vendedor2" }));
+        texto_seleccionar_vendedor.setText("ID Vendedor");
 
         carrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,12 +100,12 @@ public class VistaVenta extends javax.swing.JPanel {
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(texto_seleccionar_caja)
-                        .addGap(12, 12, 12)
-                        .addComponent(combo_box_caja, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
                         .addComponent(texto_seleccionar_vendedor)
-                        .addGap(12, 12, 12)
-                        .addComponent(combo_box_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,21 +130,24 @@ public class VistaVenta extends javax.swing.JPanel {
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)))
-                .addGap(22, 22, 22))
+                .addGap(33, 33, 33))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combo_box_caja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(7, 7, 7)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(texto_seleccionar_caja)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(texto_seleccionar_vendedor)
-                            .addComponent(combo_box_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jLabel2)
                 .addGap(5, 5, 5)
                 .addComponent(panel_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,10 +183,6 @@ public class VistaVenta extends javax.swing.JPanel {
             .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-//estos 3 son los botones
-    private void combo_box_cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_box_cajaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo_box_cajaActionPerformed
 
     private void agregar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_productosActionPerformed
         controlador.boton_agregar();
@@ -216,14 +206,14 @@ public class VistaVenta extends javax.swing.JPanel {
     private javax.swing.JButton agregar_productos;
     private javax.swing.JButton boton_vender_total;
     public javax.swing.JTable carrito;
-    private javax.swing.JComboBox<String> combo_box_caja;
-    private javax.swing.JComboBox<String> combo_box_vendedor;
     private javax.swing.JPanel fondo;
     private javax.swing.JTextField id_entrada_producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JScrollPane panel_productos;
     public javax.swing.JTable tabla_productos;
     private javax.swing.JLabel texto_producto;

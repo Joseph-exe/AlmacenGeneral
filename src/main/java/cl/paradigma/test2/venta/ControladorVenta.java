@@ -74,7 +74,6 @@ public class ControladorVenta {
             }
         }
     }
-
     public void boton_vender_total() {
         for (ModeloVenta producto_cantidad : listaProductos) 
         {

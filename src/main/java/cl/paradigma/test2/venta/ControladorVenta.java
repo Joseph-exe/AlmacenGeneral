@@ -33,23 +33,20 @@ public class ControladorVenta {
         listaProductos = new ArrayList<>();
         panel_boleta = new PanelDeBoleta();
         carroBoletaTableModel = (DefaultTableModel) panel_boleta.getCarro_boleta().getModel();
-
-        cargarDatos();
+        cargarDatosProductos();
     }
-
-    private void cargarDatos() {
+    private void cargarDatosProductos() 
+    {
         try {
             DAOProductos dao = new DAOProductoslmp();
             DefaultTableModel model = (DefaultTableModel) venta.tabla_productos.getModel();
-            dao.listar().forEach((n) -> model.addRow(new Object[]{n.getId(), n.getNombre(), n.getPrecio()}));
+            dao.listar().forEach((objeto) -> model.addRow(new Object[]{objeto.getId(), objeto.getNombre(), objeto.getPrecio()}));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-
     public void boton_agregar() 
     {
-        
         String idProductoText = venta.getId_entrada_producto().getText();
         if (idProductoText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese el ID del producto.", "AVISO", JOptionPane.WARNING_MESSAGE);
@@ -66,6 +63,7 @@ public class ControladorVenta {
                     carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
                     carroBoletaTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
                     total += producto.getPrecio();//esto suma el total a medida que le llega la ID
+                    
                     venta.getVariable_valor().setText(String.valueOf(total));
                     boolean encontrado = false;
                     for (ModeloVenta producto_cantidad : listaProductos) {
@@ -91,7 +89,10 @@ public class ControladorVenta {
             int idProducto = producto_cantidad.getIdProducto();
             int cantidad = producto_cantidad.getCantidad();
             DAOStock dao = new DAOStocklmp();
+            
             dao.descontar(idProducto, cantidad);
+            panel_boleta.getFecha_actualizable().setText(venta.getFecha_entrada().getText());
+            panel_boleta.getTexto_id_caja().setText(venta.getCaja_entrada().getText());//pone la ID de la caja en la boleta
             panel_boleta.getCarro_boleta().setModel(carritoTableModel); // Actualiza el contenido de la tabla carro_boleta con el contenido del carrito principal
             panel_boleta.getTotal_entrada().setText(String.valueOf(total)); // Actualiza el valor total en el JLabel de PanelDeBoleta
             panel_boleta.setVisible(true); // Muestra el JFrame de PanelDeBoleta

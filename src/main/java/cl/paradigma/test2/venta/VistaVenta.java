@@ -22,6 +22,7 @@ public class VistaVenta extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        jLabel4 = new javax.swing.JLabel();
         fondo = new javax.swing.JPanel();
         panel_productos = new javax.swing.JScrollPane();
         tabla_productos = new javax.swing.JTable();
@@ -31,14 +32,16 @@ public class VistaVenta extends javax.swing.JPanel {
         boton_vender_total = new javax.swing.JButton();
         texto_total = new javax.swing.JLabel();
         texto_seleccionar_caja = new javax.swing.JLabel();
-        texto_seleccionar_vendedor = new javax.swing.JLabel();
         variable_valor = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         carrito = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        caja_entrada = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        fecha_entrada = new javax.swing.JTextField();
+
+        jLabel4.setText("jLabel4");
 
         setPreferredSize(new java.awt.Dimension(497, 428));
 
@@ -74,8 +77,6 @@ public class VistaVenta extends javax.swing.JPanel {
 
         texto_seleccionar_caja.setText("Seleccione Caja");
 
-        texto_seleccionar_vendedor.setText("ID Vendedor");
-
         carrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +91,20 @@ public class VistaVenta extends javax.swing.JPanel {
 
         jLabel2.setText("Productos Disponibles ");
 
+        caja_entrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caja_entradaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Fecha");
+
+        fecha_entrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha_entradaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
@@ -101,11 +116,11 @@ public class VistaVenta extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addComponent(texto_seleccionar_caja)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(caja_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(92, 92, 92)
-                        .addComponent(texto_seleccionar_vendedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(fecha_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,19 +150,13 @@ public class VistaVenta extends javax.swing.JPanel {
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(texto_seleccionar_caja)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(texto_seleccionar_vendedor)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(7, 7, 7)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(texto_seleccionar_caja)
+                    .addComponent(caja_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(fecha_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(jLabel2)
                 .addGap(5, 5, 5)
                 .addComponent(panel_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,6 +201,14 @@ public class VistaVenta extends javax.swing.JPanel {
         controlador.boton_vender_total();
     }//GEN-LAST:event_boton_vender_totalActionPerformed
 
+    private void caja_entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caja_entradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caja_entradaActionPerformed
+
+    private void fecha_entradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha_entradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha_entradaActionPerformed
+
     //los de la tabla
     public JTextField getId_entrada_producto() {
         return id_entrada_producto;
@@ -201,25 +218,33 @@ public class VistaVenta extends javax.swing.JPanel {
     {
         return variable_valor;
     }
-    
+
+    public JTextField getCaja_entrada() {
+        return caja_entrada;
+    }
+
+    public JTextField getFecha_entrada() {
+        return fecha_entrada;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_productos;
     private javax.swing.JButton boton_vender_total;
+    private javax.swing.JTextField caja_entrada;
     public javax.swing.JTable carrito;
+    private javax.swing.JTextField fecha_entrada;
     private javax.swing.JPanel fondo;
     private javax.swing.JTextField id_entrada_producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JScrollPane panel_productos;
     public javax.swing.JTable tabla_productos;
     private javax.swing.JLabel texto_producto;
     private javax.swing.JLabel texto_seleccionar_caja;
-    private javax.swing.JLabel texto_seleccionar_vendedor;
     private javax.swing.JLabel texto_total;
     private javax.swing.JLabel variable_valor;
     // End of variables declaration//GEN-END:variables

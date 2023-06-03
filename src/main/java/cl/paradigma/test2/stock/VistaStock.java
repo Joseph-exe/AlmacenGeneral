@@ -28,8 +28,6 @@ public class VistaStock extends javax.swing.JPanel
         boton_agregar = new javax.swing.JButton();
         boton_editar = new javax.swing.JButton();
         boton_eliminar = new javax.swing.JButton();
-        texto = new javax.swing.JLabel();
-        buscador = new javax.swing.JTextField();
 
         tabla_productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,8 +60,6 @@ public class VistaStock extends javax.swing.JPanel
             }
         });
 
-        texto.setText("Buscar Nombre");
-
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
@@ -77,22 +73,12 @@ public class VistaStock extends javax.swing.JPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boton_eliminar)
                 .addGap(12, 12, 12))
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(texto)
-                .addGap(18, 18, 18)
-                .addComponent(buscador)
-                .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texto)
-                    .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_agregar)
@@ -129,10 +115,8 @@ public class VistaStock extends javax.swing.JPanel
     private javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_editar;
     private javax.swing.JButton boton_eliminar;
-    private javax.swing.JTextField buscador;
     private javax.swing.JPanel fondo;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabla_productos;
-    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }

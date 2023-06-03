@@ -4,43 +4,18 @@
  */
 package cl.paradigma.test2.venta;
 
-import cl.paradigma.test2.producto.DAOProductoslmp;
-import cl.paradigma.test2.producto.ModeloProducto;
-import cl.paradigma.test2.stock.DAOStocklmp;
-import cl.paradigma.test2.utilidades.DAOProductos;
-import cl.paradigma.test2.utilidades.DAOStock;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 public class VistaVenta extends javax.swing.JPanel {
+    private ControladorVenta controlador;
     
-    //manejar mejor la tabla
-    private DefaultTableModel carritoTableModel;
-    private ModeloProducto producto;
-    private List<ProductoCantidad> listaProductos;
-    private int total;
-    
-    public VistaVenta() {
-        initComponents();
-        carritoTableModel = (DefaultTableModel) carrito.getModel();//le pasamos la tabla en cuestion
-        cargarDatos();
-        total = 0;
-        listaProductos = new ArrayList<>();
-        
-    }
-
-    private void cargarDatos() 
+    public VistaVenta() 
     {
-    try {
-        DAOProductos dao = new DAOProductoslmp();
-        DefaultTableModel model = (DefaultTableModel) tabla_productos.getModel();
-        dao.listar().forEach((n) -> model.addRow(new Object[]{n.getId(), n.getNombre(), n.getPrecio()}));
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    }
+        initComponents();
+        controlador = new ControladorVenta(this);
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -220,86 +195,27 @@ public class VistaVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_combo_box_cajaActionPerformed
 
     private void agregar_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_productosActionPerformed
-    String idProductoText = id_entrada_producto.getText();
-    
-    if  (idProductoText.isEmpty())//cuando el texto este vacio
-    {
-        JOptionPane.showMessageDialog(null, "Por favor, ingrese el ID del producto.", "AVISO", JOptionPane.WARNING_MESSAGE);
-    }
-    else{
-        int producto_id = Integer.parseInt(idProductoText);
-        DAOProductos dao = new DAOProductoslmp();
-            try 
-            {
-                producto = dao.getNegocioById(producto_id);
-                
-                if (producto.getNombre() == null) // cuando el id sea incorrecto
-                {
-                    JOptionPane.showMessageDialog(null, "Este producto no existe.", "AVISO", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
-                    total += producto.getPrecio();// para sacar el total
-                    variable_valor.setText(String.valueOf(total));//para actualizar
-
-                    boolean encontrado = false;
-                    //para poner en una lista lo que se va agregando y poder venderlo
-                    for (ProductoCantidad producto_cantidad : listaProductos) {
-                        if (producto_cantidad.getIdProducto() == producto_id) 
-                        {
-                            producto_cantidad.setCantidad(producto_cantidad.getCantidad() + 1);
-                            encontrado = true;
-                            break;
-                        }
-                    }
-                    if (!encontrado) 
-                    {
-                        listaProductos.add(new ProductoCantidad(producto_id, 1));
-                    }
-                }
-            } catch (Exception ex) 
-            {
-                JOptionPane.showMessageDialog(null, "Error al agregar a su carro.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    
+        controlador.boton_agregar();
     }//GEN-LAST:event_agregar_productosActionPerformed
 
     private void boton_vender_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_vender_totalActionPerformed
-    for (ProductoCantidad producto_cantidad : listaProductos) {
-        int idProducto = producto_cantidad.getIdProducto();
-        int cantidad = producto_cantidad.getCantidad();
-        //System.out.println("ID: " + idProducto + ", Cantidad: " + cantidad);
-        DAOStock dao = new DAOStocklmp();
-        
-        dao.descontar(idProducto, cantidad);
-    } 
+        controlador.boton_vender_total();
     }//GEN-LAST:event_boton_vender_totalActionPerformed
 
-    public class ProductoCantidad {
-    private int idProducto;
-    private int cantidad;
-
-    public ProductoCantidad(int idProducto, int cantidad) {
-        this.idProducto = idProducto;
-        this.cantidad = cantidad;
+    //los de la tabla
+    public JTextField getId_entrada_producto() {
+        return id_entrada_producto;
     }
 
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public JLabel getVariable_valor() {
+        return variable_valor;
     }
     
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_productos;
     private javax.swing.JButton boton_vender_total;
-    private javax.swing.JTable carrito;
+    public javax.swing.JTable carrito;
     private javax.swing.JComboBox<String> combo_box_caja;
     private javax.swing.JComboBox<String> combo_box_vendedor;
     private javax.swing.JPanel fondo;
@@ -309,7 +225,7 @@ public class VistaVenta extends javax.swing.JPanel {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane panel_productos;
-    private javax.swing.JTable tabla_productos;
+    public javax.swing.JTable tabla_productos;
     private javax.swing.JLabel texto_producto;
     private javax.swing.JLabel texto_seleccionar_caja;
     private javax.swing.JLabel texto_seleccionar_vendedor;

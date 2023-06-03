@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorEditarEliminar 
 {
     private VistaStock vistaStock;
+    
     public ControladorEditarEliminar(VistaStock VistaStock)
     {
         this.vistaStock = VistaStock;

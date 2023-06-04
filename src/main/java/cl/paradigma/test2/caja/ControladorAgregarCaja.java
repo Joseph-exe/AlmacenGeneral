@@ -78,8 +78,6 @@ public class ControladorAgregarCaja
                     dao.modificar(caja);
                 }
                 String successMsg = esEdicion ? "modificado" : "registrado";
-
-                JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) {
                     vista.getTipo_entrada().setText("");
                     vista.getNumero_entrada().setText("");

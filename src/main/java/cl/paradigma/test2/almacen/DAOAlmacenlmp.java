@@ -4,6 +4,7 @@
  */
 package cl.paradigma.test2.almacen;
 
+import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.utilidades.ConexionBaseDeDatos;
 import cl.paradigma.test2.utilidades.DAOAlmacen;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ public class DAOAlmacenlmp extends ConexionBaseDeDatos implements DAOAlmacen
            solicitud.setString(2, almacen.getNombre_almacen());
            solicitud.setString(3, almacen.getDireccion_almacen());
            solicitud.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Se ha registrado correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
        } catch(SQLException e)
        {
            JOptionPane.showMessageDialog(null, "No se a podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -43,6 +45,8 @@ public class DAOAlmacenlmp extends ConexionBaseDeDatos implements DAOAlmacen
             solicitud.setString(2, almacen.getDireccion_almacen());
             solicitud.setInt(3, almacen.getId_almacen());
             solicitud.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se ha Editado Correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            ShowJPanel(new VistaAlmacenes());  
         } catch(SQLException e) 
         {
             JOptionPane.showMessageDialog(null, "No se a podido modificar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -60,8 +64,9 @@ public class DAOAlmacenlmp extends ConexionBaseDeDatos implements DAOAlmacen
             solicitud.setInt(1, almacen_id);
             solicitud.executeUpdate();//actualizamos
             solicitud.close();//cerramos
+            JOptionPane.showMessageDialog(null, "Almacen Eliminado.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
             } catch(SQLException e) {
-                JOptionPane.showMessageDialog(null, "No se a podido eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se a podido eliminar.\n"+e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
             } finally {
                 this.Cerrar();
             }

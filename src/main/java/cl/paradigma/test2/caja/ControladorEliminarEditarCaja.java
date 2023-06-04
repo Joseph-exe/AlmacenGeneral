@@ -83,6 +83,8 @@ public class ControladorEliminarEditarCaja
                 //----
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
                 vistaEditar.getId_entrada().setEditable(false);
+                vistaEditar.getAlmacen_entrada().setEditable(false);
+                vistaEditar.getVendedor_entrada().setEditable(false);
                 VistaPrincipal.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 

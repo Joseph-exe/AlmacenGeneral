@@ -10,7 +10,7 @@ public class ControladorAgregar
 {
     private VistaAgregar vista;
     private boolean esEdicion;
-    private ModeloStock negocioEdicion;
+    private ModeloStock stockEdicion;
 
     public ControladorAgregar(VistaAgregar vista) {
         this.vista = vista;
@@ -20,7 +20,7 @@ public class ControladorAgregar
     public ControladorAgregar(VistaAgregar vista, ModeloStock stock) {
         this.vista = vista;
         this.esEdicion = true;
-        this.negocioEdicion = stock;
+        this.stockEdicion = stock;
     }
 
     public boolean esEdicion() {
@@ -28,7 +28,7 @@ public class ControladorAgregar
     }
 
     public ModeloStock getNegocioEdicion() {
-        return negocioEdicion;
+        return stockEdicion;
     }
         public void edicion() 
     {
@@ -55,7 +55,7 @@ public class ControladorAgregar
             int id_producto = Integer.parseInt(vista.getId_producto_entrada().getText());
             int stock = Integer.parseInt(vista.getStock_entrada().getText());
 
-            ModeloStock negocio = esEdicion ? negocioEdicion : new ModeloStock();
+            ModeloStock negocio = esEdicion ? stockEdicion : new ModeloStock();
             negocio.setId_bodega_modelo_stock(id_bodega);
             negocio.setId_producto_modelo_stock(id_producto);
             negocio.setStock_modelo(stock);
@@ -68,8 +68,6 @@ public class ControladorAgregar
                     dao.modificar(negocio);
                 }
                 String successMsg = esEdicion ? "modificado" : "registrado";
-
-                JOptionPane.showMessageDialog(vista, "Se ha implementado correctamente", "AVISO", JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) {
                     vista.getId_bodega_entrada().setText("");
                     vista.getId_producto_entrada().setText("");

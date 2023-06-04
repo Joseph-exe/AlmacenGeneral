@@ -4,6 +4,7 @@
  */
 package cl.paradigma.test2.bodega;
 
+import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.utilidades.ConexionBaseDeDatos;
 import cl.paradigma.test2.utilidades.DAOBodega;
 import java.sql.PreparedStatement;
@@ -20,16 +21,6 @@ public class DAOBodegalmp extends ConexionBaseDeDatos implements DAOBodega
 public void registrar(ModeloBodega bodega) {
     try {
         this.Conectar();
-        
-        // Verificar si el almacén existe en la base de datos
-        PreparedStatement verificarAlmacen = this.conexion.prepareStatement("SELECT almacenes_idtable2 FROM bodegas WHERE almacenes_idtable2 = ?");
-        verificarAlmacen.setInt(1, bodega.getId_almacen());
-        ResultSet resultado = verificarAlmacen.executeQuery();
-        if (!resultado.next()) {
-            // si no esta
-            JOptionPane.showMessageDialog(null, "Ese almacén no se encuentra registrado.", "AVISO", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         PreparedStatement solicitud = this.conexion.prepareStatement("INSERT INTO bodegas(idBodegas, volumen_max, peso_max, almacenes_idtable2) VALUES (?, ?, ?, ?)");
         solicitud.setInt(1, bodega.getId_bodega());
         solicitud.setInt(2, bodega.getVolumen_maximo());
@@ -39,7 +30,7 @@ public void registrar(ModeloBodega bodega) {
         
         JOptionPane.showMessageDialog(null, "Se ha registrado correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al registrar. No se ha podido agregar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Error al registrar,Verifique su informacion.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
     } finally {
         this.Cerrar();
     }
@@ -54,7 +45,8 @@ public void registrar(ModeloBodega bodega) {
             solicitud.setInt(3, bodega.getPeso_maximo());
             solicitud.setInt(4, bodega.getId_bodega());
             solicitud.executeUpdate();
-            JOptionPane.showMessageDialog(null, "se ha editado correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha Editado Correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            ShowJPanel(new VistaBodegas());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se ha podido modificar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {
@@ -70,6 +62,7 @@ public void registrar(ModeloBodega bodega) {
             solicitud.setInt(1, bodega_id);
             solicitud.executeUpdate();
             solicitud.close();
+            JOptionPane.showMessageDialog(null, "Se ha Eliminado Correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se ha podido eliminar.\n" + e.getMessage(), "AVISO", JOptionPane.ERROR_MESSAGE);
         } finally {

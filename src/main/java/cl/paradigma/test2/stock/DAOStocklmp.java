@@ -1,5 +1,7 @@
 package cl.paradigma.test2.stock;
 
+import cl.paradigma.test2.main.VistaPrincipal;
+import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.utilidades.ConexionBaseDeDatos;
 import cl.paradigma.test2.utilidades.DAOStock;
 import java.sql.PreparedStatement;
@@ -22,6 +24,8 @@ public class DAOStocklmp extends ConexionBaseDeDatos implements DAOStock
            solicitud.setInt(2, stock.getId_producto_modelo_stock());
            solicitud.setInt(3, stock.getStock_modelo());
            solicitud.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Se ha registrado correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+           VistaPrincipal.ShowJPanel(new VistaAgregar());
        } catch(SQLException e){
            JOptionPane.showMessageDialog(null, "No se a podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
        }finally{
@@ -38,6 +42,8 @@ public class DAOStocklmp extends ConexionBaseDeDatos implements DAOStock
             solicitud.setInt(2, stock.getId_bodega_modelo_stock());
             solicitud.setInt(3, stock.getId_producto_modelo_stock());
             solicitud.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se ha modificado correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            ShowJPanel(new VistaStock()); 
         } catch(SQLException e) 
         {
             JOptionPane.showMessageDialog(null, "No se a podido modificar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -55,6 +61,7 @@ public class DAOStocklmp extends ConexionBaseDeDatos implements DAOStock
             solicitud.setInt(2, producto_id);
             solicitud.executeUpdate();//actualizamos
             solicitud.close();//cerramos
+            JOptionPane.showMessageDialog(null, "Se ha Eliminado Correctamente.", "AVISO", JOptionPane.INFORMATION_MESSAGE);
             } catch(SQLException e) {
                 JOptionPane.showMessageDialog(null, "No se a podido eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
             } finally {

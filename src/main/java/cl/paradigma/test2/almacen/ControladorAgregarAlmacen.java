@@ -87,7 +87,6 @@ public class ControladorAgregarAlmacen
                 
                 //si modificado es verdadero se edita, si no se registra 
                 String successMsg = esEdicion ? "modificado" : "registrado";
-                JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) 
                 {
                     vista.getNombre_insertar().setText("");

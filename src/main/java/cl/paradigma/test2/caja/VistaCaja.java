@@ -7,6 +7,7 @@ import cl.paradigma.test2.boleta.detalles.VistaDetalles;
 import cl.paradigma.test2.boletas.VistaBoleta;
 import cl.paradigma.test2.main.VistaPrincipal;
 import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
+import cl.paradigma.test2.vendedores.VistaVendedores;
 public class VistaCaja extends javax.swing.JPanel 
     {
     //para que no cree mas espacio de controladores
@@ -28,6 +29,7 @@ public class VistaCaja extends javax.swing.JPanel
         boton_eliminar = new javax.swing.JButton();
         boton_boleta = new javax.swing.JButton();
         boton_boleta_detallada = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         tabla_productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,24 +84,34 @@ public class VistaCaja extends javax.swing.JPanel
             }
         });
 
+        jButton1.setText("Vendedores");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(boton_agregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boton_editar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boton_eliminar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boton_boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_boleta_detallada, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(boton_agregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boton_editar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boton_eliminar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(boton_boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(boton_boleta_detallada, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
@@ -111,12 +123,15 @@ public class VistaCaja extends javax.swing.JPanel
                     .addComponent(boton_boleta, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_agregar)
                     .addComponent(boton_editar)
-                    .addComponent(boton_eliminar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(boton_eliminar)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -151,6 +166,10 @@ public class VistaCaja extends javax.swing.JPanel
         ShowJPanel(new VistaDetalles());
     }//GEN-LAST:event_boton_boleta_detalladaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ShowJPanel(new VistaVendedores());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_boleta;
@@ -158,6 +177,7 @@ public class VistaCaja extends javax.swing.JPanel
     private javax.swing.JButton boton_editar;
     private javax.swing.JButton boton_eliminar;
     private javax.swing.JPanel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabla_productos;
     // End of variables declaration//GEN-END:variables

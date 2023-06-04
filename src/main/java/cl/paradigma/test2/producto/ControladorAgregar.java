@@ -78,8 +78,6 @@ public class ControladorAgregar
                     dao.modificar(negocio);
                 }
                 String successMsg = esEdicion ? "modificado" : "registrado";
-
-                JOptionPane.showMessageDialog(vista, "Se a implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
                 if (!esEdicion) {
                     vista.getNombre_texto().setText("");
                     vista.getPrecio_texto().setText("");

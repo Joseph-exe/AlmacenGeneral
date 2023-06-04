@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package cl.paradigma.test2.venta;
+package cl.paradigma.test2.vender;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,7 +10,6 @@ import javax.swing.JTextField;
 
 public class VistaVenta extends javax.swing.JPanel {
     private ControladorVenta controlador;
-    
     public VistaVenta() 
     {
         initComponents();

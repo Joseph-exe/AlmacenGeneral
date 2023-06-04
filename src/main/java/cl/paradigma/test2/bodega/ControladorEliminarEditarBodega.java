@@ -82,6 +82,8 @@ public class ControladorEliminarEditarBodega
                 VistaAgregar vistaEditar = new VistaAgregar(dao.getBodegaById(producto_id));
                 vistaEditar.getId_bodega_insertar().setEditable(false);
                 VistaPrincipal.ShowJPanel(vistaEditar);
+                vistaEditar.getId_almacen_insertar().setEditable(false);
+                VistaPrincipal.ShowJPanel(vistaEditar);
             } 
             catch (Exception e) 
             {

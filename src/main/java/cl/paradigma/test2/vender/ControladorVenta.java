@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cl.paradigma.test2.venta;
+package cl.paradigma.test2.vender;
 
 import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.producto.DAOProductoslmp;
@@ -62,8 +62,8 @@ public class ControladorVenta {
                     //agregamos altiro a la tabla los productos que se solicitan para verse como carrito 
                     carritoTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
                     carroBoletaTableModel.addRow(new Object[]{producto.getNombre(), producto.getPrecio()});
-                    total += producto.getPrecio();//esto suma el total a medida que le llega la ID
-                    
+                    total += producto.getPrecio();//suma el total a medida que le llega la ID
+
                     venta.getVariable_valor().setText(String.valueOf(total));
                     boolean encontrado = false;
                     for (ModeloVenta producto_cantidad : listaProductos) {

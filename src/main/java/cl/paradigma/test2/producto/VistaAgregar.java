@@ -17,9 +17,9 @@ public class VistaAgregar extends javax.swing.JPanel
         controlador.edicion();
     }
 
-    public VistaAgregar(ModeloProducto negocio) {
+    public VistaAgregar(ModeloProducto producto) {
         initComponents();
-        controlador = new ControladorAgregar(this, negocio);
+        controlador = new ControladorAgregar(this, producto);
         controlador.edicion();
     }
     

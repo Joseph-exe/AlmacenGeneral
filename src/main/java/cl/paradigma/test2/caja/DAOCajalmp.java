@@ -4,6 +4,8 @@
  */
 package cl.paradigma.test2.caja;
 
+import cl.paradigma.test2.main.VistaPrincipal;
+import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.utilidades.ConexionBaseDeDatos;
 import cl.paradigma.test2.utilidades.DAOCaja;
 import java.sql.PreparedStatement;
@@ -31,6 +33,8 @@ import javax.swing.JOptionPane;
            solicitud.setInt(4, caja.getId_almacen());
            solicitud.setInt(5, caja.getId_vendedor());
            solicitud.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Se ha implementado correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
+           VistaPrincipal.ShowJPanel(new VistaAgregar());
        } catch(SQLException e){
            JOptionPane.showMessageDialog(null, "No se a podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
        }finally{
@@ -49,6 +53,8 @@ import javax.swing.JOptionPane;
             solicitud.setInt(4, caja.getId_vendedor());
             solicitud.setInt(5, caja.getId_caja());
             solicitud.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se ha Modificado Correctamente", "AVISO",JOptionPane.INFORMATION_MESSAGE);
+            ShowJPanel(new VistaCaja());
         } catch(SQLException e) 
         {
             JOptionPane.showMessageDialog(null, "No se a podido modificar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);

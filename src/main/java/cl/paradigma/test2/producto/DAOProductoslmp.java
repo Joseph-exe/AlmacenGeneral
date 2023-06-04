@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cl.paradigma.test2.producto;
+import cl.paradigma.test2.main.VistaPrincipal;
+import static cl.paradigma.test2.main.VistaPrincipal.ShowJPanel;
 import cl.paradigma.test2.utilidades.ConexionBaseDeDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,8 @@ import javax.swing.JOptionPane;
            solicitud.setInt(4, producto.getPeso());
            solicitud.setInt(5, producto.getVolumen());
            solicitud.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Se ha Registrado Correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+           VistaPrincipal.ShowJPanel(new VistaAgregar());
        } catch(SQLException e){
            JOptionPane.showMessageDialog(null, "No se a podido agregar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
        }finally{
@@ -47,6 +51,8 @@ import javax.swing.JOptionPane;
             solicitud.setInt(4, producto.getVolumen());
             solicitud.setInt(5, producto.getId());
             solicitud.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se ha Editado Correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+            ShowJPanel(new VistaProductos());
         } catch(SQLException e) 
         {
             JOptionPane.showMessageDialog(null, "No se a podido modificar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -64,6 +70,7 @@ import javax.swing.JOptionPane;
             solicitud.setInt(1, producto_id);
             solicitud.executeUpdate();//actualizamos
             solicitud.close();//cerramos
+            JOptionPane.showMessageDialog(null, "Se ha Eliminado Correctamente \n", "AVISO", JOptionPane.INFORMATION_MESSAGE);
             } catch(SQLException e) {
                 JOptionPane.showMessageDialog(null, "No se a podido eliminar.\n", "AVISO", JOptionPane.ERROR_MESSAGE);
             } finally {

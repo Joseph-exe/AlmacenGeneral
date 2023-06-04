@@ -76,10 +76,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="boton_venta" min="-2" pref="170" max="-2" attributes="0"/>
                   <Component id="boton_Almacenes" min="-2" pref="170" max="-2" attributes="0"/>
-                  <Component id="boton_administrar_bodegas" min="-2" pref="170" max="-2" attributes="0"/>
-                  <Component id="boton_administrar_productos" min="-2" pref="170" max="-2" attributes="0"/>
-                  <Component id="boton_Stock" min="-2" pref="170" max="-2" attributes="0"/>
-                  <Component id="boton_caja1" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="boton_bodegas" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="boton_productos" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="boton_stock" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="boton_caja" min="-2" pref="170" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -90,20 +90,20 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="boton_Almacenes" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="boton_administrar_bodegas" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="boton_bodegas" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="boton_administrar_productos" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="boton_productos" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="boton_Stock" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="boton_stock" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="boton_caja1" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="boton_caja" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace pref="84" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="boton_administrar_productos">
+            <Component class="javax.swing.JButton" name="boton_productos">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -118,10 +118,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_administrar_productosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_productosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boton_administrar_bodegas">
+            <Component class="javax.swing.JButton" name="boton_bodegas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -139,7 +139,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_administrar_bodegasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_bodegasActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="boton_Almacenes">
@@ -181,7 +181,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ventaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boton_Stock">
+            <Component class="javax.swing.JButton" name="boton_stock">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -196,10 +196,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_StockActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_stockActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boton_caja1">
+            <Component class="javax.swing.JButton" name="boton_caja">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
@@ -217,7 +217,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_caja1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_cajaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

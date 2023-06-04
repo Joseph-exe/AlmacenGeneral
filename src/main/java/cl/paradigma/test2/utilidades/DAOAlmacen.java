@@ -16,5 +16,5 @@ public interface DAOAlmacen
     public void modificar(ModeloAlmacen almacen) throws Exception;
     public void eliminar(int almacen_id) throws Exception;
     public List<ModeloAlmacen> listar() throws Exception;
-    public ModeloAlmacen getNegocioById(int almacen_id) throws Exception;
+    public ModeloAlmacen getAlmacenById(int almacen_id) throws Exception;
 }

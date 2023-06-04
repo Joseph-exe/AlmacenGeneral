@@ -12,26 +12,29 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorEliminarEditarAlmacen 
 {
     private VistaAlmacenes vistaAlmacen;
+    //constructor
     public ControladorEliminarEditarAlmacen(VistaAlmacenes VistaProductos)
     {
         this.vistaAlmacen = VistaProductos;
         cargarDatos();
     }
-    //---------
-    //este void como su nombre indica solo es para cargar datos de la tabla
-    //-----------
+    
+    // cargamos datos a la tabla
+    
     private void cargarDatos() 
     {
     try {
         DAOAlmacen dao = new DAOAlmacenlmp();
         DefaultTableModel model = (DefaultTableModel) vistaAlmacen.tabla_productos.getModel();
+        //se cargan en este orden
         dao.listar().forEach((n) -> model.addRow(new Object[]
         {
             n.getId_almacen(),
             n.getNombre_almacen(),
             n.getDireccion_almacen(),
         }));
-    } catch (Exception e) {
+    } catch (Exception e) 
+    {
         System.out.println(e.getMessage());
     }
     }
@@ -42,7 +45,7 @@ public class ControladorEliminarEditarAlmacen
     {
         DAOAlmacen dao = new DAOAlmacenlmp();
         DefaultTableModel model = (DefaultTableModel) vistaAlmacen.tabla_productos.getModel();
-        //
+        
         //selecciona la tabla con su ID respectivo, luego lo borra segun la ID misma
         //con su respectivas verificaciones por si no selecciona nada
         //
@@ -63,21 +66,23 @@ public class ControladorEliminarEditarAlmacen
             }
         }    
     }
+    
     //--------------
     //fin de la funcion eliminar
     //--------------
     //Inicio de la funcion editar
+    
     public void botonEditarProductos()
-    {
+    {       
             if (vistaAlmacen.tabla_productos.getSelectedRow() > -1) 
             {
             try {
-                int negocioId = (int) vistaAlmacen.tabla_productos.getValueAt(vistaAlmacen.tabla_productos.getSelectedRow(), 0);
+                int almcen_id = (int) vistaAlmacen.tabla_productos.getValueAt(vistaAlmacen.tabla_productos.getSelectedRow(), 0);
                 DAOAlmacen dao = new DAOAlmacenlmp();
                 //-----
                 //Mostrar la vista editar bloqueando poder editar el ID
                 //----
-                VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
+                VistaAgregar vistaEditar = new VistaAgregar(dao.getAlmacenById(almcen_id));
                 vistaEditar.getId_almacen_insertar().setEditable(false);
                 VistaPrincipal.ShowJPanel(vistaEditar);
             } 

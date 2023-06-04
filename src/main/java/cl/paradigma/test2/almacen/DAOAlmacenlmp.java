@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
-    public class DAOAlmacenlmp extends ConexionBaseDeDatos implements DAOAlmacen{
-
+    
+public class DAOAlmacenlmp extends ConexionBaseDeDatos implements DAOAlmacen
+{
     @Override
+    //registramos
     public void registrar(ModeloAlmacen almacen) {
        try{
            this.Conectar();
@@ -32,7 +33,7 @@ import javax.swing.JOptionPane;
            this.Cerrar();
        }
     }
-
+    //modiicamos
     @Override
     public void modificar(ModeloAlmacen almacen) {
         try {
@@ -49,7 +50,7 @@ import javax.swing.JOptionPane;
             this.Cerrar();
         }        
     }
-
+    //eliminamos
     @Override
     public void eliminar(int almacen_id) {
         //llamo a la la base de datos para que me borre una fila segun su id
@@ -65,7 +66,7 @@ import javax.swing.JOptionPane;
                 this.Cerrar();
             }
     }
-
+    //listamos
     @Override
     public List<ModeloAlmacen> listar() {
         List<ModeloAlmacen> lista = null;
@@ -91,9 +92,9 @@ import javax.swing.JOptionPane;
         }
         return lista;
     }
-
+    //modelamos
     @Override
-    public ModeloAlmacen getNegocioById(int almacen_id) {
+    public ModeloAlmacen getAlmacenById(int almacen_id) {
         ModeloAlmacen almacen = new ModeloAlmacen();
         try{
            this.Conectar();

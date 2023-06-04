@@ -10,25 +10,25 @@ public class ControladorAgregarBodega
 {
     private VistaAgregar vista;
     private boolean esEdicion;
-    private ModeloBodega negocioEdicion;
+    private ModeloBodega almacenEdicion;
     public ControladorAgregarBodega(VistaAgregar vista) 
     {
         this.vista = vista;
         this.esEdicion = false;
     }
 
-    public ControladorAgregarBodega(VistaAgregar vista, ModeloBodega negocio) {
+    public ControladorAgregarBodega(VistaAgregar vista, ModeloBodega bodega) {
         this.vista = vista;
         this.esEdicion = true;
-        this.negocioEdicion = negocio;
+        this.almacenEdicion = bodega;
     }
 
     public boolean esEdicion() {
         return esEdicion;
     }
 
-    public ModeloBodega getNegocioEdicion() {
-        return negocioEdicion;
+    public ModeloBodega getBodegaEdicion() {
+        return almacenEdicion;
     }
         public void edicion() 
     {
@@ -36,13 +36,13 @@ public class ControladorAgregarBodega
             vista.getTexto_de_registro().setText("Panel de Edicion");
             vista.getBoton_registrar().setText("Aceptar");
         }
-        if (getNegocioEdicion() != null)//Mira si hay un objeto
+        if (getBodegaEdicion() != null)//Mira si hay un objeto
         {
             //actualiza los cuadros de texto pero en editar
-            vista.getId_bodega_insertar().setText(String.valueOf(getNegocioEdicion().getId_bodega()));
-            vista.getId_almacen_insertar().setText(String.valueOf(getNegocioEdicion().getId_almacen()));
-            vista.getPeso_max_insertar().setText(String.valueOf(getNegocioEdicion().getPeso_maximo()));
-            vista.getVolumen_max_insertar().setText(String.valueOf(getNegocioEdicion().getVolumen_maximo()));
+            vista.getId_bodega_insertar().setText(String.valueOf(getBodegaEdicion().getId_bodega()));
+            vista.getId_almacen_insertar().setText(String.valueOf(getBodegaEdicion().getId_almacen()));
+            vista.getPeso_max_insertar().setText(String.valueOf(getBodegaEdicion().getPeso_maximo()));
+            vista.getVolumen_max_insertar().setText(String.valueOf(getBodegaEdicion().getVolumen_maximo()));
         }
     }
 
@@ -61,7 +61,7 @@ public class ControladorAgregarBodega
             int peso_max_entrada = Integer.parseInt(vista.getPeso_max_insertar().getText());
             int volumen_max_entrada = Integer.parseInt(vista.getVolumen_max_insertar().getText());
 
-            ModeloBodega bodega = esEdicion ? negocioEdicion : new ModeloBodega();
+            ModeloBodega bodega = esEdicion ? almacenEdicion : new ModeloBodega();
             bodega.setId_bodega(id_bodega_entrada);
             bodega.setId_almacen(id_almacen_entrada);
             bodega.setPeso_maximo(peso_max_entrada);

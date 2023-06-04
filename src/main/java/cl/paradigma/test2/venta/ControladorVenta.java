@@ -54,7 +54,7 @@ public class ControladorVenta {
             int producto_id = Integer.parseInt(idProductoText);
             DAOProductos dao = new DAOProductoslmp();
             try {
-                producto = dao.getNegocioById(producto_id);
+                producto = dao.getProductoById(producto_id);
 
                 if (producto.getNombre() == null) {
                     JOptionPane.showMessageDialog(null, "Este producto no existe.", "AVISO", JOptionPane.ERROR_MESSAGE);

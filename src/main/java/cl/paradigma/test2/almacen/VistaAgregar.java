@@ -20,13 +20,13 @@ public class VistaAgregar extends javax.swing.JPanel
         controlador.edicion();
     }
 
-    public VistaAgregar(ModeloAlmacen negocio) {
+    public VistaAgregar(ModeloAlmacen almacen) 
+    {
         initComponents();
-        controlador = new ControladorAgregarAlmacen(this, negocio);
+        controlador = new ControladorAgregarAlmacen(this, almacen);
         controlador.edicion();
     }
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

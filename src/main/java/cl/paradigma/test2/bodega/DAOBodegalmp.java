@@ -103,7 +103,7 @@ public void registrar(ModeloBodega bodega) {
     }
 
     @Override
-    public ModeloBodega getNegocioById(int bodega_id) {
+    public ModeloBodega getBodegaById(int bodega_id) {
         ModeloBodega producto = new ModeloBodega();
         try {
             this.Conectar();

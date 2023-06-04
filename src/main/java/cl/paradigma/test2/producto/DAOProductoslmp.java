@@ -100,7 +100,7 @@ import javax.swing.JOptionPane;
     }
 
     @Override
-    public ModeloProducto getNegocioById(int producto_id) {
+    public ModeloProducto getProductoById(int producto_id) {
         ModeloProducto producto = new ModeloProducto();
         try{
            this.Conectar();

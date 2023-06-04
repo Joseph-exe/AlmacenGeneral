@@ -4,7 +4,6 @@
  */
 package cl.paradigma.test2.utilidades;
 import cl.paradigma.test2.stock.ModeloStock;
-import cl.paradigma.test2.venta.VistaVenta;
 import java.util.List;
 
 public interface DAOStock 
@@ -12,7 +11,7 @@ public interface DAOStock
     public void registrar(ModeloStock stock) throws Exception;
     public void modificar(ModeloStock stock) throws Exception;
     public void eliminar(int bodega_id, int producto_id);
-    public void descontar(int idProducto, int cantidad);
+    public void descontar(int id_producto, int cantidad);
     public List<ModeloStock> listar() throws Exception;
     public ModeloStock getStockById(int bodega_id,int producto_id) throws Exception;
 }

@@ -67,12 +67,12 @@ public class ControladorEliminarEditar
             if (vistaProductos.tabla_productos.getSelectedRow() > -1) 
             {
             try {
-                int negocioId = (int) vistaProductos.tabla_productos.getValueAt(vistaProductos.tabla_productos.getSelectedRow(), 0);
+                int producto_id = (int) vistaProductos.tabla_productos.getValueAt(vistaProductos.tabla_productos.getSelectedRow(), 0);
                 DAOProductos dao = new DAOProductoslmp();
                 //-----
                 //Mostrar la vista editar bloqueando poder editar el ID
                 //----
-                VistaAgregar vistaEditar = new VistaAgregar(dao.getNegocioById(negocioId));
+                VistaAgregar vistaEditar = new VistaAgregar(dao.getProductoById(producto_id));
                 vistaEditar.getId_texto().setEditable(false);
                 VistaPrincipal.ShowJPanel(vistaEditar);
             } 

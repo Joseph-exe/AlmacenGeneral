@@ -16,5 +16,5 @@ public interface DAOBoletaDetalle {
     public void modificar(ModeloBoletaDetalle boleta_detalles) throws Exception;
     public void eliminar(int boleta_detalles_id,int producto_id) throws Exception;
     public List<ModeloBoletaDetalle> listar() throws Exception;
-    public ModeloBoletaDetalle getStockById(int boleta_detalles,int producto_id) throws Exception;    
+    public ModeloBoletaDetalle getBoletaById(int boleta_detalles,int producto_id) throws Exception;    
 }

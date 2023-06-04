@@ -6,9 +6,6 @@ package cl.paradigma.test2.almacen;
 
 import cl.paradigma.test2.main.VistaPrincipal;
 
-
-
-
 public class VistaAlmacenes extends javax.swing.JPanel 
     {
     //para que no cree mas espacio de controladores

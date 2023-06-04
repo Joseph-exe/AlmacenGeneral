@@ -87,7 +87,7 @@ public class DAOBoletalmp extends ConexionBaseDeDatos implements DAOBoleta {
     }
 
     @Override
-    public ModeloBoleta getNegocioById(int boleta_id) {
+    public ModeloBoleta getBoletaById(int boleta_id) {
         ModeloBoleta boleta = new ModeloBoleta();
         try {
             this.Conectar();

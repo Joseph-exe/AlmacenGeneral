@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface DAOBoleta 
 {
-    public void registrar(ModeloBoleta negocio) throws Exception;
-    public void modificar(ModeloBoleta negocio) throws Exception;
-    public void eliminar(int negocioId) throws Exception;//negocioID es por que solo necesitamos el id
+    public void registrar(ModeloBoleta boleta) throws Exception;
+    public void modificar(ModeloBoleta boleta) throws Exception;
+    public void eliminar(int boleta_id) throws Exception;
     public List<ModeloBoleta> listar() throws Exception;
-    public ModeloBoleta getNegocioById(int negocioId) throws Exception;
+    public ModeloBoleta getBoletaById(int boleta_id) throws Exception;
 }

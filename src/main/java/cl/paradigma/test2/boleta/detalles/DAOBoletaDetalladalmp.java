@@ -92,7 +92,7 @@ public class DAOBoletaDetalladalmp extends ConexionBaseDeDatos implements DAOBol
         }
         return lista;
     }
-    public ModeloBoletaDetalle getStockById(int boleta_id, int producto_id) throws Exception 
+    public ModeloBoletaDetalle getBoletaById(int boleta_id, int producto_id) throws Exception 
     {
         ModeloBoletaDetalle detalle_boleta = new ModeloBoletaDetalle();
         try{
